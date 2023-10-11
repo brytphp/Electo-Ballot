@@ -1,0 +1,32 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 8889,
+            "driver": "MySQL",
+            "name": "Localhost",
+            "group": "Locall",
+            "database": "electo",
+            "username": "root",
+            "password": "root",
+            "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
+        }
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.well-known": true,
+        ".well-known": true,
+        "**/node_modules": true,
+        "node_modules": true
+    },
+    "explorerExclude.backup": {}
+}
