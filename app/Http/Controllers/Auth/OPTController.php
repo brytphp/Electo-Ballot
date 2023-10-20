@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Electo\OTP;
-use App\Events\TotalVotesCast;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OTPRequest;
 use App\Notifications\GetVerificationCode;
-use Illuminate\Http\Request;
 
 class OPTController extends Controller
 {
@@ -25,7 +22,7 @@ class OPTController extends Controller
 
     public function index()
     {
-        if (!empty(auth()->user()->voted_at)) {
+        if (! empty(auth()->user()->voted_at)) {
             return redirect()->route('voter.ballot.success');
         }
 

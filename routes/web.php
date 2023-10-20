@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\OPTController;
-use App\Http\Controllers\Callback\WittyCallbackController;
 use App\Http\Controllers\ExhibitionController;
 use App\Http\Controllers\FirebaseController;
 use App\Http\Controllers\ProfileController;
@@ -43,8 +42,6 @@ Route::prefix('exhibition')->group(function () {
 Route::get('/voter-inclusion', [VoterUpdateController::class, 'index'])->name('voter-inclusion');
 Route::post('/voter-inclusion', [VoterUpdateController::class, 'submit'])->name('voter-inclusion.submit');
 
-Route::post('/sms-call-back-response', [OPTController::class, 'verify'])->name('sms-call-back-response');
-
 Route::get('/profile/{candidate}', [ProfileController::class, 'index'])->name('profile');
 
 Route::get('/logout', function () {
@@ -54,8 +51,6 @@ Route::get('/logout', function () {
 Route::patch('/fcm-token', [FirebaseController::class, 'updateToken'])->name('update-firebase-token');
 
 Route::post('/send-notification', [FirebaseController::class, 'notification'])->name('notification');
-
-Route::post('/sms-callback', WittyCallbackController::class)->name('sms-callback');
 
 // php artisan queue:retry all
 // php artisan short-schedule:run

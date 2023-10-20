@@ -13,8 +13,20 @@
                         <div class="text-center">
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">
-                                    <h4 class="mt-4 font-weight-semibold text-success">VOTING COMPLETED SUCCESSFULY</h4>
-                                    <div class="mt-4">
+                                    <div class="text-center">
+                                        <img src="{{ $election->logo }}" alt=""
+                                            class="img-thumbnail rounded-circle avatar-sm">
+                                        <h5 class="mt-2 font-weight-semibold">{{ $election->election }}</h5>
+                                    </div>
+
+                                    <div class="mt-2">
+                                        <p class="font-weight-semibold text-success">Thank you for voting in this election
+                                        </p>
+                                        <a href="javascript:void(0)"
+                                            class="btn btn-outline-success waves-effect waves-light"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                            Download Receipt
+                                        </a>
                                     </div>
                                 </div>
                             </div>

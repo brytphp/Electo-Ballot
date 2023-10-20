@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    include __DIR__ . '/voter/api.php';
+    include __DIR__.'/voter/api.php';
 
     Route::group([
         'prefix' => 'api',
