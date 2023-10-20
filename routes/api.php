@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    include __DIR__.'/voter/api.php';
+    include __DIR__ . '/voter/api.php';
+
+    Route::group([
+        'prefix' => 'api',
+        'as' => 'api.',
+    ], function () {
+        Route::group([
+            'prefix' => 'auth',
+            'as' => 'auth.',
+        ], function () {
+            Route::post('/verify-otp', \App\Http\Controllers\Auth\OTPVerificationController::class)->name('verify-otp');
+        });
+    });
 });

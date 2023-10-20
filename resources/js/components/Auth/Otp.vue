@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div ref="formContainer" class="vld-parent">
         <form class="outer-repeater" @submit.prevent="save" @keydown="form.onKeydown($event)">
             <div class="form-group textcenter" style="">
                 <div style="display: flex; flex-direction: row;" class="pr-5">
@@ -32,8 +32,6 @@ export default {
     },
     data() {
         return {
-            isLoading: true,
-            fullPage: true,
             form: new Form({
                 verification_code: '',
             }),
@@ -44,17 +42,21 @@ export default {
         handleOnComplete(value) {
             this.form.verification_code = value
 
-            this.isLoading = true
 
-            this.form.post(this.route("voter.otp2", {})).then(({
+            let loader = this.$loading.show({
+                container: this.$refs.formContainer,
+            });
+
+
+            this.form.post(this.route("api.auth.verify-otp", {})).then(({
                 data
             }) => {
-                this.isLoading = false
                 window.location.href = this.route('voter.ballot.paper', data);
                 return false;
             })
                 .catch(error => {
                     this.$refs.otpInput.clearInput();
+                    loader.hide()
                 });
 
         },
@@ -64,8 +66,6 @@ export default {
         },
         handleClearInput() {
             this.$refs.otpInput.clearInput();
-
-            this.isLoading = true
         },
     },
 };

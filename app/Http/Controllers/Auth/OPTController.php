@@ -32,44 +32,6 @@ class OPTController extends Controller
         return view('auth.otp');
     }
 
-    public function verify(Request $request)
-    {
-        $this->validate(request(), [
-            'verification_code' => 'required|size:6',
-        ]);
-
-        if (auth()->user()->otp != $request->verification_code) {
-            return back()->withErrors(['verification_code' => 'Invalid verification code']);
-        }
-
-        auth()->user()->update([
-            'otp' => null,
-            'otp_expires_at' => null,
-            'attempted_at' => now(),
-            // 'voting_attempts' => auth()->user()->voting_attempts++
-        ]);
-
-        return redirect()->route('voter.ballot.paper', [auth()->user()->election->positions()->first()->id]);
-    }
-
-    public function verify2(OTPRequest $request)
-    {
-        auth()->user()->update([
-            'otp' => null,
-            'otp_expires_at' => null,
-            'attempted_at' => now(),
-            // 'voting_attempts' => auth()->user()->voting_attempts++
-        ]);
-
-        // try {
-        //     event(new TotalVotesCast(auth()->user()->election));
-        // } catch (\Throwable $th) {
-        //     //throw $th;
-        // }
-
-        return auth()->user()->election->positions()->first()->id;
-    }
-
     public function resend(OTP $otp)
     {
         if (now()->isBefore(auth()->user()->otp_expires_at)) {

@@ -30,8 +30,6 @@ Route::get('/home', RedirectController::class)->name('home');
 
 Route::prefix('verify')->group(function () {
     Route::get('/', [OPTController::class, 'index'])->name('voter.verification.form');
-    Route::post('/', [OPTController::class, 'verify'])->name('voter.verification');
-    Route::post('/v2', [OPTController::class, 'verify2'])->name('voter.otp2');
     Route::get('/resend', [OPTController::class, 'resend'])->name('voter.verification.resend');
 });
 
@@ -65,6 +63,3 @@ Route::post('/sms-callback', WittyCallbackController::class)->name('sms-callback
 // ./vendor/bin/phpstan analyse --memory-limit=2G
 // nvm use default 16.15.0
 // ab -n 100 -c 10 http://electo.test
-git remote add origin git@github.com:brytphp/electo-ballot.git
-
-git remote set-url origin git@github.com:brytphp/electo-ballot.git
