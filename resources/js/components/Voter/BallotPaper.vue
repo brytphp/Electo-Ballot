@@ -21,8 +21,8 @@
                             </h4>
                         </div>
                     </div>
-                    <marquee behavior="" direction="">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    </marquee>
+                    <!-- <marquee behavior="" direction="">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    </marquee> -->
                 </div>
             </div>
             <!-- end page title -->

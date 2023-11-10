@@ -46,7 +46,7 @@ export default {
 
 
             this.$modal.show('dialog', {
-                title: '<span style="text-align:center"><i class="bx bx-info-circle bx-tada mr-2"></i>Final Step! <br></span>This can not be reversed. Are you sure about this? </span>',
+                title: '<span style="text-align:center"><i class="bx bx-info-circle bx-tada mr-2"></i>Final Confirmation! <br></span> This can not be reversed. Are you sure about this? </span>',
                 buttons: [
                     {
                         title: '<div class="dialog-popup text-danger">No</div>',

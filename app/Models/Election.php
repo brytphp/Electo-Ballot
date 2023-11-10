@@ -76,19 +76,13 @@ class Election extends Model implements HasMedia
 
     public function getBannerAttribute()
     {
+        return str_replace(config('app.url'), config('electo.electo_admin_url'), $this->getFirstMediaUrl('banner'));
         return $this->getFirstMediaUrl('banner');
     }
 
     public function getLogoAttribute()
     {
-        return $this->getFirstMediaUrl('logo', 'mini');
-
-        //Check if media has collection and return default.jpg if false
-        if ($this->media->isEmpty()) {
-            return asset('img/logo.png');
-        } else {
-            return $this->getFirstMediaUrl('logo', 'mini');
-        }
+        return str_replace(config('app.url'), config('electo.electo_admin_url'), $this->getFirstMediaUrl('logo', 'mini'));
     }
 
     public function positions()
