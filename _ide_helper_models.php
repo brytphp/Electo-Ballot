@@ -256,33 +256,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\ImportValidationErrors
- *
- * @property int $id
- * @property int|null $row
- * @property string|null $attribute
- * @property string|null $errors
- * @property string|null $value
- * @property string|null $election_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors query()
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereAttribute($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereElectionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereErrors($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereRow($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ImportValidationErrors whereValue($value)
- */
-	class ImportValidationErrors extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * App\Models\Login
  *
  * @property string $id

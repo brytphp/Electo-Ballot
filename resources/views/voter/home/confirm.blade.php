@@ -33,7 +33,7 @@
         <div class="row justify-content-center">
             @foreach ($votes as $vote)
                 @if (!empty($vote->candidate_id))
-                    <div class="col-md-4 col-lg-3 col-sm-6 col-xs-6">
+                    <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4">
                         <div class="card text-center team-box">
 
                             <div class="card-body ballot">
@@ -41,10 +41,10 @@
                                     <h6 class="text-uppercase"> <strong>{{ $vote->position->position }}</strong></h6>
                                 </div>
                                 <div>
-                                    <img src="{{ $vote->candidate->avatar }}" alt="avatar"
-                                        style="width:250px; height:250px;" class="rounded img-fluid">
+                                    <img src="{{ $vote->candidate->avatar }}" class="rounded img-fluid">
                                 </div>
-                                <div class="mt-2">
+
+                                <div class="mt-2" style="height:50px;">
                                     <h6>{{ $vote->candidate->first_name }} {{ $vote->candidate->other_names }}</h6>
                                 </div>
                             </div>

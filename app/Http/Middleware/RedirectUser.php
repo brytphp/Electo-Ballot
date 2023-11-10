@@ -20,7 +20,7 @@ class RedirectUser
         $end = Carbon::parse(auth()->user()->election->end_date);
 
         if ($now->between($start, $end)) {
-            return redirect()->route('voter.ballot', auth()->user()->election->positions()->first()->id);
+            return redirect()->route('voter.ballot.paper', auth()->user()->election->positions()->first()->id);
         }
 
         return redirect()->route('voter.ballot.success');

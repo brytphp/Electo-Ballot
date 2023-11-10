@@ -62,3 +62,21 @@ function total_number_of_voters()
 {
     return User::where('access_role', 'user')->count();
 }
+
+function to_micro($time)
+{
+    return $milliseconds = 1000 * strtotime($time);
+
+    // // pass down `now` or a saved timestamp like `2021-06-15 01:03:35.678652`
+    // $time = new \DateTime('now', new \DateTimeZone('UTC'));
+    // // or something like:
+    // $time = DateTime::createFromFormat('U.u', number_format(microtime(true), 6, '.', ''), new \DateTimeZone('UTC'));
+
+    // in microseconds:
+    // $now_us = (int)$time->format('Uu');
+    // e.g.: 1623719015678652
+
+    // in milliseconds:
+    return $now_ms = (int) $time->format('Uv');
+    // e.g.: 1623719015678
+}

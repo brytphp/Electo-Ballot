@@ -10,4 +10,6 @@ return [
     'pusher_secrete' => env('PUSHER_APP_SECRET'),
 
     'mail_from_address' => env('MAIL_FROM_ADDRESS'),
+
+    'electo_admin_url' => env('ELECTO_ADMIN_URL', 'http://ec-electo.test'),
 ];

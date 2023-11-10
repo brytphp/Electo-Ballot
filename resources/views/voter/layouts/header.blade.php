@@ -26,6 +26,7 @@
 
         <div class="d-flex">
             <div class="dnone d-lg-block ml-2" style="width: 200px;">
+                {{-- <timer end_date="{{ to_micro($election->end_date) }}"></timer> --}}
                 <span>@include('partials.counter', ['election' => auth()->user()->election])</span>
             </div>
         </div>

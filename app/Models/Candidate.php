@@ -81,8 +81,8 @@ class Candidate extends Model implements HasMedia
         if ($this->media->isEmpty()) {
             return asset('img/avatar.png');
         } else {
+            return str_replace(config('app.url'), config('electo.electo_admin_url'), $this->getFirstMediaUrl('avatar'));
             return $this->getFirstMediaUrl('avatar');
-
             return $this->media->first()->url;
         }
     }

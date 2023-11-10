@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
-                <div class="collapse navbar-collapse bg-light" id="topnav-menu-content">
+                <div class="collapse navbar-collapse " id="topnav-menu-content">
                     <ul class="navbar-nav">
                         @foreach ($data['data']['positions'] as $index => $position)
                             <li class="nav-item">

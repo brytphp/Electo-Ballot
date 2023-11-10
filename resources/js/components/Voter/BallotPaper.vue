@@ -27,10 +27,10 @@
             </div>
             <!-- end page title -->
 
-            <div class="row " v-if="isLoading == false">
-                <div class="col-md-4 col-lg-3 col-sm-6 col-xs-6" v-for="(candidate, index) in ballot.data.candidates"
+            <div class="row justify-content-center" v-if="isLoading == false">
+                <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4" v-for="(candidate, index) in ballot.data.candidates"
                     :key="index">
-                    <div class="card text-center team-box rounded" @click="toggleCandidate(candidate.id, index + 1)">
+                    <div class="card text-center team-box rounded h100" @click="toggleCandidate(candidate.id, index + 1)">
 
                         <div class="card-body ballot" :class="form.candidates.includes(candidate.id) ? 'voted' : ''">
                             <div class="cardheader rounded  border-bottom bg-faded text-dark">
@@ -40,8 +40,8 @@
                             <div>
                                 <img :src="candidate.avatar" alt="" class="rounded img-fluid">
                             </div>
-                            <div class="mt-2">
-                                <h5>{{ candidate.first_name }} {{ candidate.other_names }}</h5>
+                            <div class="mt-2" style="height:50px;">
+                                <h6>{{ candidate.first_name }} {{ candidate.other_names }}</h6>
                             </div>
                         </div>
                     </div>
