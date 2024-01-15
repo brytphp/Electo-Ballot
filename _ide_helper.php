@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.31.0.
+ * Generated for Laravel 10.40.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3520,6 +3520,18 @@
                         $instance->assertDispatchedWithoutChain($command, $callback);
         }
                     /**
+         * Create a new assertion about a chained batch.
+         *
+         * @param \Closure $callback
+         * @return \Illuminate\Support\Testing\Fakes\ChainedBatchTruthTest 
+         * @static 
+         */ 
+        public static function chainedBatch($callback)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
+                        return $instance->chainedBatch($callback);
+        }
+                    /**
          * Assert if a batch was dispatched based on a truth-test callback.
          *
          * @param callable $callback
@@ -5065,6 +5077,20 @@
         {
                         /** @var \Illuminate\Database\DatabaseManager $instance */
                         return $instance->connection($name);
+        }
+                    /**
+         * Get a database connection instance from the given configuration.
+         *
+         * @param string $name
+         * @param array $config
+         * @param bool $force
+         * @return \Illuminate\Database\MySqlConnection 
+         * @static 
+         */ 
+        public static function connectUsing($name, $config, $force = false)
+        {
+                        /** @var \Illuminate\Database\DatabaseManager $instance */
+                        return $instance->connectUsing($name, $config, $force);
         }
                     /**
          * Register a custom Doctrine type.
@@ -6856,13 +6882,14 @@
          *
          * @param string $path
          * @param string $data
+         * @param bool $lock
          * @return int 
          * @static 
          */ 
-        public static function append($path, $data)
+        public static function append($path, $data, $lock = false)
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        return $instance->append($path, $data);
+                        return $instance->append($path, $data, $lock);
         }
                     /**
          * Get or set UNIX mode of a file or directory.
@@ -7466,30 +7493,30 @@
                         return $instance->after($callback);
         }
                     /**
-         * Determine if the given ability should be granted for the current user.
+         * Determine if all of the given abilities should be granted for the current user.
          *
-         * @param string $ability
+         * @param \Illuminate\Auth\Access\iterable|string $abilities
          * @param array|mixed $arguments
          * @return bool 
          * @static 
          */ 
-        public static function allows($ability, $arguments = [])
+        public static function allows($abilities, $arguments = [])
         {
                         /** @var \Illuminate\Auth\Access\Gate $instance */
-                        return $instance->allows($ability, $arguments);
+                        return $instance->allows($abilities, $arguments);
         }
                     /**
-         * Determine if the given ability should be denied for the current user.
+         * Determine if any of the given abilities should be denied for the current user.
          *
-         * @param string $ability
+         * @param \Illuminate\Auth\Access\iterable|string $abilities
          * @param array|mixed $arguments
          * @return bool 
          * @static 
          */ 
-        public static function denies($ability, $arguments = [])
+        public static function denies($abilities, $arguments = [])
         {
                         /** @var \Illuminate\Auth\Access\Gate $instance */
-                        return $instance->denies($ability, $arguments);
+                        return $instance->denies($abilities, $arguments);
         }
                     /**
          * Determine if all of the given abilities should be granted for the current user.
@@ -8179,6 +8206,17 @@
                         return $instance->getDispatcher();
         }
                     /**
+         * Get the array of global middleware.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getGlobalMiddleware()
+        {
+                        /** @var \Illuminate\Http\Client\Factory $instance */
+                        return $instance->getGlobalMiddleware();
+        }
+                    /**
          * Register a custom macro.
          *
          * @param string $name
@@ -8330,6 +8368,18 @@
         {
                         /** @var \Illuminate\Translation\Translator $instance */
                         $instance->load($namespace, $group, $locale);
+        }
+                    /**
+         * Register a callback that is responsible for handling missing translation keys.
+         *
+         * @param callable|null $callback
+         * @return static 
+         * @static 
+         */ 
+        public static function handleMissingKeysUsing($callback)
+        {
+                        /** @var \Illuminate\Translation\Translator $instance */
+                        return $instance->handleMissingKeysUsing($callback);
         }
                     /**
          * Add a new namespace to the loader.
@@ -9989,6 +10039,18 @@
                         $instance->assertNotPushed($job, $callback);
         }
                     /**
+         * Assert the total count of jobs that were pushed.
+         *
+         * @param int $expectedCount
+         * @return void 
+         * @static 
+         */ 
+        public static function assertCount($expectedCount)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
+                        $instance->assertCount($expectedCount);
+        }
+                    /**
          * Assert that no jobs were pushed.
          *
          * @return void 
@@ -10289,6 +10351,18 @@
         {            //Method inherited from \Illuminate\Queue\RedisQueue         
                         /** @var \Laravel\Horizon\RedisQueue $instance */
                         return $instance->getRedis();
+        }
+                    /**
+         * Get the maximum number of attempts for an object-based queue handler.
+         *
+         * @param mixed $job
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getJobTries($job)
+        {            //Method inherited from \Illuminate\Queue\Queue         
+                        /** @var \Laravel\Horizon\RedisQueue $instance */
+                        return $instance->getJobTries($job);
         }
                     /**
          * Get the backoff for an object-based queue handler.
@@ -13148,6 +13222,7 @@
      * @method static \Illuminate\Routing\RouteRegistrar controller(string $controller)
      * @method static \Illuminate\Routing\RouteRegistrar domain(string $value)
      * @method static \Illuminate\Routing\RouteRegistrar middleware(array|string|null $middleware)
+     * @method static \Illuminate\Routing\RouteRegistrar missing(\Closure $missing)
      * @method static \Illuminate\Routing\RouteRegistrar name(string $value)
      * @method static \Illuminate\Routing\RouteRegistrar namespace(string|null $value)
      * @method static \Illuminate\Routing\RouteRegistrar prefix(string $prefix)
@@ -13604,6 +13679,18 @@
         {
                         /** @var \Illuminate\Routing\Router $instance */
                         $instance->substituteImplicitBindings($route);
+        }
+                    /**
+         * Register a callback to to run after implicit bindings are substituted.
+         *
+         * @param callable $callback
+         * @return \Illuminate\Routing\Router 
+         * @static 
+         */ 
+        public static function substituteImplicitBindingsUsing($callback)
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        return $instance->substituteImplicitBindingsUsing($callback);
         }
                     /**
          * Register a route matched event listener.
@@ -14143,16 +14230,50 @@
                         return $instance->dropDatabaseIfExists($name);
         }
                     /**
-         * Determine if the given table exists.
+         * Get the tables for the database.
          *
-         * @param string $table
-         * @return bool 
+         * @return array 
          * @static 
          */ 
-        public static function hasTable($table)
+        public static function getTables()
         {
                         /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
-                        return $instance->hasTable($table);
+                        return $instance->getTables();
+        }
+                    /**
+         * Get the views for the database.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getViews()
+        {
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->getViews();
+        }
+                    /**
+         * Get all of the table names for the database.
+         *
+         * @deprecated Will be removed in a future Laravel version.
+         * @return array 
+         * @static 
+         */ 
+        public static function getAllTables()
+        {
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->getAllTables();
+        }
+                    /**
+         * Get all of the view names for the database.
+         *
+         * @deprecated Will be removed in a future Laravel version.
+         * @return array 
+         * @static 
+         */ 
+        public static function getAllViews()
+        {
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->getAllViews();
         }
                     /**
          * Get the columns for a given table.
@@ -14165,6 +14286,30 @@
         {
                         /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
                         return $instance->getColumns($table);
+        }
+                    /**
+         * Get the indexes for a given table.
+         *
+         * @param string $table
+         * @return array 
+         * @static 
+         */ 
+        public static function getIndexes($table)
+        {
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->getIndexes($table);
+        }
+                    /**
+         * Get the foreign keys for a given table.
+         *
+         * @param string $table
+         * @return array 
+         * @static 
+         */ 
+        public static function getForeignKeys($table)
+        {
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->getForeignKeys($table);
         }
                     /**
          * Drop all tables from the database.
@@ -14187,28 +14332,6 @@
         {
                         /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
                         $instance->dropAllViews();
-        }
-                    /**
-         * Get all of the table names for the database.
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function getAllTables()
-        {
-                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
-                        return $instance->getAllTables();
-        }
-                    /**
-         * Get all of the view names for the database.
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function getAllViews()
-        {
-                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
-                        return $instance->getAllViews();
         }
                     /**
          * Set the default string length for migrations.
@@ -14263,6 +14386,41 @@
         public static function useNativeSchemaOperationsIfPossible($value = true)
         {            //Method inherited from \Illuminate\Database\Schema\Builder         
                         \Illuminate\Database\Schema\MySqlBuilder::useNativeSchemaOperationsIfPossible($value);
+        }
+                    /**
+         * Determine if the given table exists.
+         *
+         * @param string $table
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasTable($table)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->hasTable($table);
+        }
+                    /**
+         * Determine if the given view exists.
+         *
+         * @param string $view
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasView($view)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->hasView($view);
+        }
+                    /**
+         * Get the user-defined types that belong to the database.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getTypes()
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->getTypes();
         }
                     /**
          * Determine if the given table has a given column.
@@ -14501,6 +14659,52 @@
                         /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
                         $instance->blueprintResolver($resolver);
         }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        \Illuminate\Database\Schema\MySqlBuilder::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        \Illuminate\Database\Schema\MySqlBuilder::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        return \Illuminate\Database\Schema\MySqlBuilder::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flushMacros()
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        \Illuminate\Database\Schema\MySqlBuilder::flushMacros();
+        }
          
     }
             /**
@@ -14713,6 +14917,18 @@
         {
                         /** @var \Illuminate\Session\Store $instance */
                         return $instance->only($keys);
+        }
+                    /**
+         * Get all the session data except for a specified array of items.
+         *
+         * @param array $keys
+         * @return array 
+         * @static 
+         */ 
+        public static function except($keys)
+        {
+                        /** @var \Illuminate\Session\Store $instance */
+                        return $instance->except($keys);
         }
                     /**
          * Checks if a key exists.
@@ -20208,7 +20424,7 @@
                     /**
          * 
          *
-         * @param \Spatie\Html\HtmlElement|string|null $contents
+         * @param \Spatie\Html\HtmlElement|string|\Spatie\Html\iterable|int|float|null $contents
          * @return \Spatie\Html\Elements\Div 
          * @static 
          */ 
@@ -20830,6 +21046,154 @@
      
 }
 
+    namespace LaravelQRCode\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class QRCode {
+                    /**
+         * Returns as QR_CalendarEvent object
+         *
+         * @param \DateTime $start
+         * @param \DateTime $end
+         * @param string $summary
+         * @param string $description
+         * @param string $location
+         * @return \QR_Code\Types\QR_CalendarEvent 
+         * @throws \QR_Code\Exceptions\EmptyEventSummaryException
+         * @throws \QR_Code\Exceptions\InvalidEventDateException
+         * @static 
+         */ 
+        public static function calendar($start, $end, $summary, $description, $location)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->calendar($start, $end, $summary, $description, $location);
+        }
+                    /**
+         * Returns a QR_EmailMessage object
+         *
+         * @param string $toEmail
+         * @param string $body
+         * @param string $subject
+         * @return \QR_Code\Types\QR_EmailMessage 
+         * @throws \LaravelQRCode\Exceptions\EmptyTextException
+         * @static 
+         */ 
+        public static function email($toEmail, $body, $subject)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->email($toEmail, $body, $subject);
+        }
+                    /**
+         * Returns a QR_meCard object
+         *
+         * @param string $name
+         * @param string $address
+         * @param string $phone
+         * @param string $email
+         * @return \QR_Code\Types\QR_meCard 
+         * @static 
+         */ 
+        public static function meCard($name, $address, $phone, $email)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->meCard($name, $address, $phone, $email);
+        }
+                    /**
+         * Returns a QR_Phone object
+         *
+         * @param string $number
+         * @return \QR_Code\Types\QR_Phone 
+         * @static 
+         */ 
+        public static function phone($number)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->phone($number);
+        }
+                    /**
+         * Return a QR_Sms object
+         *
+         * @param string $number
+         * @param string $text
+         * @return \QR_Code\Types\QR_Sms 
+         * @static 
+         */ 
+        public static function sms($number, $text)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->sms($number, $text);
+        }
+                    /**
+         * Returns a QR_Text object
+         *
+         * @param string $data
+         * @return \QR_Code\Types\QR_Text 
+         * @throws \LaravelQRCode\Exceptions\EmptyTextException
+         * @static 
+         */ 
+        public static function text($data)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->text($data);
+        }
+                    /**
+         * Returns a QR_Url object
+         *
+         * @param string $url
+         * @return \QR_Code\Types\QR_Url 
+         * @throws \LaravelQRCode\Exceptions\EmptyTextException
+         * @throws \LaravelQRCode\Exceptions\MalformedUrlException
+         * @static 
+         */ 
+        public static function url($url = null)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->url($url);
+        }
+                    /**
+         * Returns a QR_VCard object
+         *
+         * @param string $firstName
+         * @param string $lastName
+         * @param string $title Miss, Mrs., Mr., Doctor, etc
+         * @param string $email
+         * @param string $company
+         * @param string $job
+         * @param string $url
+         * @param array $addresses
+         * @param array $phones
+         * @return \QR_Code\Types\QR_VCard 
+         * @throws \QR_Code\Exceptions\InvalidVCardAddressEntryException
+         * @throws \QR_Code\Exceptions\InvalidVCardPhoneEntryException
+         * @static 
+         */ 
+        public static function vCard($firstName = null, $lastName = null, $title = null, $email = null, $company = null, $job = null, $url = null, $addresses = [], $phones = [])
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->vCard($firstName, $lastName, $title, $email, $company, $job, $url, $addresses, $phones);
+        }
+                    /**
+         * Returns a QR_WiFi object
+         *
+         * @param string $authType
+         * @param string $ssId
+         * @param string $password
+         * @param bool $ssdIDisHidden
+         * @return \QR_Code\Types\QR_WiFi 
+         * @static 
+         */ 
+        public static function wifi($authType, $ssId, $password, $ssdIDisHidden)
+        {
+                        /** @var \LaravelQRCode\QRCodeFactory $instance */
+                        return $instance->wifi($authType, $ssId, $password, $ssdIDisHidden);
+        }
+         
+    }
+     
+}
+
     namespace AshAllenDesign\ShortURL\Facades { 
             /**
      * 
@@ -21094,14 +21458,28 @@
                         return $instance->deactivateAt($deactivationTime);
         }
                     /**
-         * 
+         * Set the seed to be used when generating a short URL key.
          *
+         * @param int $generateUsing
+         * @return \AshAllenDesign\ShortURL\Classes\Builder 
          * @static 
          */ 
         public static function generateKeyUsing($generateUsing)
         {
                         /** @var \AshAllenDesign\ShortURL\Classes\Builder $instance */
                         return $instance->generateKeyUsing($generateUsing);
+        }
+                    /**
+         * Pass the Short URL model into the callback before it is created.
+         *
+         * @param \Closure $callback
+         * @return \AshAllenDesign\ShortURL\Classes\Builder 
+         * @static 
+         */ 
+        public static function beforeCreate($callback)
+        {
+                        /** @var \AshAllenDesign\ShortURL\Classes\Builder $instance */
+                        return $instance->beforeCreate($callback);
         }
                     /**
          * Attempt to build a shortened URL and return it.
@@ -24966,7 +25344,7 @@ namespace  {
              * Add a "where date" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|null $operator
              * @param \DateTimeInterface|string|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
@@ -24982,7 +25360,7 @@ namespace  {
              * Add an "or where date" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|null $operator
              * @param \DateTimeInterface|string|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -24997,7 +25375,7 @@ namespace  {
              * Add a "where time" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|null $operator
              * @param \DateTimeInterface|string|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
@@ -25013,7 +25391,7 @@ namespace  {
              * Add an "or where time" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|null $operator
              * @param \DateTimeInterface|string|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -25028,7 +25406,7 @@ namespace  {
              * Add a "where day" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|int|null $operator
              * @param \DateTimeInterface|string|int|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
@@ -25044,7 +25422,7 @@ namespace  {
              * Add an "or where day" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|int|null $operator
              * @param \DateTimeInterface|string|int|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -25059,7 +25437,7 @@ namespace  {
              * Add a "where month" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|int|null $operator
              * @param \DateTimeInterface|string|int|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
@@ -25075,7 +25453,7 @@ namespace  {
              * Add an "or where month" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|int|null $operator
              * @param \DateTimeInterface|string|int|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -25090,7 +25468,7 @@ namespace  {
              * Add a "where year" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|int|null $operator
              * @param \DateTimeInterface|string|int|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
@@ -25106,7 +25484,7 @@ namespace  {
              * Add an "or where year" statement to the query.
              *
              * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-             * @param string $operator
+             * @param \DateTimeInterface|string|int|null $operator
              * @param \DateTimeInterface|string|int|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -26557,6 +26935,7 @@ namespace  {
             class FastExcel extends \Rap2hpoutre\FastExcel\Facades\FastExcel {}
             class Html extends \Spatie\Html\Facades\Html {}
             class Setting extends \anlutro\LaravelSettings\Facade {}
+            class QRCode extends \LaravelQRCode\Facades\QRCode {}
             class ShortURL extends \AshAllenDesign\ShortURL\Facades\ShortURL {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Voter\Ballot\BallotPagesController;
 use App\Http\Controllers\Voter\Ballot\BallotPaperController;
 use App\Http\Controllers\Voter\Ballot\ConfirmationController;
+use App\Http\Controllers\Voter\Ballot\ReceiptController;
 use App\Http\Controllers\Voter\Ballot\SkipController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::group(['as' => 'voter.'], function () {
     Route::middleware(['auth', 'is_voter'])->group(function () {
         Route::get('/election/status', [BallotPagesController::class, 'status'])->name('ballot.status');
         Route::get('/ballot/success', [BallotPagesController::class, 'success'])->name('ballot.success');
+        Route::get('/receipt', [ReceiptController::class, 'download'])->name('receipt.download');
 
         Route::group([
             'middleware' => [

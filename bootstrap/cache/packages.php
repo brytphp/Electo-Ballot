@@ -62,6 +62,17 @@
       'ReCaptcha' => 'Biscolab\\ReCaptcha\\Facades\\ReCaptcha',
     ),
   ),
+  'giauphan/laravel-qr-code' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LaravelQRCode\\Providers\\QRCodeServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'QRCode' => 'LaravelQRCode\\Facades\\QRCode',
+    ),
+  ),
   'intervention/image' => 
   array (
     'providers' => 

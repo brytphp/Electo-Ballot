@@ -22,9 +22,8 @@
                                     <div class="mt-2">
                                         <p class="font-weight-semibold text-success">Thank you for voting in this election
                                         </p>
-                                        <a href="javascript:void(0)"
-                                            class="btn btn-outline-success waves-effect waves-light"
-                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        <a href="{{ route('voter.receipt.download') }}"
+                                            class="btn btn-outline-success waves-effect waves-light">
                                             Download Receipt
                                         </a>
                                     </div>

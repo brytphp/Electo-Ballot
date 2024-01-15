@@ -176,6 +176,7 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Spatie\Html\HtmlServiceProvider::class,
         anlutro\LaravelSettings\ServiceProvider::class,
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -258,6 +259,7 @@ return [
         'FastExcel' => Rap2hpoutre\FastExcel\Facades\FastExcel::class,
         'Html' => Spatie\Html\Facades\Html::class,
         'Setting' => 'anlutro\LaravelSettings\Facade',
+        'QRCode' => LaravelQRCode\Facades\QRCode::class,
 
     ],
 

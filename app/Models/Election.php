@@ -51,6 +51,7 @@ class Election extends Model implements HasMedia
         'app_end_date' => 'datetime:M d, Y g:i:s a',
         'exhibition_start_date' => 'datetime:M d, Y g:i:s a',
         'exhibition_end_date' => 'datetime:M d, Y g:i:s a',
+
     ];
 
     public function registerMediaCollections(): void

@@ -38,13 +38,11 @@ class Kernel extends ConsoleKernel
     {
         $shortSchedule->command('check:phone')->everySeconds(5);
         // $shortSchedule->command('electo:simulate')->everySeconds(5);
-
-        // $shortSchedule->command('election:automatic')->everySecond();
+        $shortSchedule->command('election:automatic')->everySecond();
 
         // // this artisan command will run every second
         // $shortSchedule->command('pusher:push')->everySecond();
         // $shortSchedule->command('remind:voters')->everySecond();
-
         // this artisan command will run every second, its signature will be resolved from container
         // $shortSchedule->command(\Spatie\ShortSchedule\Tests\Unit\TestCommand::class)->everySecond();
     }
@@ -56,7 +54,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
