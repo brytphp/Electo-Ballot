@@ -27,7 +27,6 @@ class HasVoted
         }
 
         if (auth()->user()->election->is_sealed == 0 || auth()->user()->election->is_active == 0) {
-
             return redirect()->route('voter.ballot.status');
         }
 

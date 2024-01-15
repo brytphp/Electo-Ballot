@@ -91,8 +91,7 @@
 
     <!-- hero section start -->
     <section class="section hero-section bg-ico-hero"
-        style="background-image: url('{{ $election->getFirstMediaUrl('banner') }}'); background-attachment: fixed;"
-        id="home">
+        style="background-image: url('{{ $election->banner }}'); background-attachment: fixed;" id="home">
         <div class="bg-overlay bgdark"></div>
         <div class="container">
             <div class="row align-items-center mb-5">
@@ -235,7 +234,7 @@
                                                                             } else {
                                                                                 $percentage = @round(($candidate->tally / ($position->votes() + $skipped) ?: 1) * 100, 2);
                                                                             }
-                                                                            
+
                                                                         @endphp
 
 
@@ -303,7 +302,7 @@
                                                                     @endforeach
                                                                     @if ($skipped > 0)
                                                                         @php
-                                                                            
+
                                                                             $skipped_percentage = @round(($skipped / ($position->votes() + $skipped) ?: 1) * 100, 2);
                                                                         @endphp
 

@@ -67,7 +67,7 @@ class Election extends Model implements HasMedia
             ->useDisk('media')
             ->onlyKeepLatest(1)
             ->useFallbackUrl(asset('img/logo.png'))
-            ->registerMediaConversions(function (Media $media = null) {
+            ->registerMediaConversions(function (?Media $media = null) {
                 $this->addMediaConversion('mini')
                     ->crop('crop-center', 200, 200)
                     ->optimize();
@@ -78,6 +78,7 @@ class Election extends Model implements HasMedia
     public function getBannerAttribute()
     {
         return str_replace(config('app.url'), config('electo.electo_admin_url'), $this->getFirstMediaUrl('banner'));
+
         return $this->getFirstMediaUrl('banner');
     }
 

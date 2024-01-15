@@ -8,7 +8,7 @@ class RedirectController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'redirect_if_is_admin']);
+        $this->middleware(['auth', 'redirect_voter']);
     }
 
     /**

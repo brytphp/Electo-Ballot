@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['as' => 'voter.'], function () {
-    Route::middleware(['auth', 'is_voter'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
         Route::get('/election/status', [BallotPagesController::class, 'status'])->name('ballot.status');
         Route::get('/ballot/success', [BallotPagesController::class, 'success'])->name('ballot.success');
         Route::get('/receipt', [ReceiptController::class, 'download'])->name('receipt.download');

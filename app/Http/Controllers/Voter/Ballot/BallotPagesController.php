@@ -17,9 +17,9 @@ class BallotPagesController extends Controller
 
     public function success()
     {
-        if (auth()->user()->voted_at == null) {
-            return redirect()->route('voter.ballot.paper', [auth()->user()->election->positions()->first()->id]);
-        }
+        // if (auth()->user()->voted_at == null) {
+        //     return redirect()->route('voter.ballot.paper', [auth()->user()->election->positions()->first()->id]);
+        // }
 
         return view('voter.home.success');
     }

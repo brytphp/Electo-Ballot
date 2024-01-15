@@ -63,7 +63,7 @@ class Candidate extends Model implements HasMedia
             ->useDisk('media')
             ->onlyKeepLatest(1)
             ->useFallbackUrl(asset('img/avatar.png'))
-            ->registerMediaConversions(function (Media $media = null) {
+            ->registerMediaConversions(function (?Media $media = null) {
                 $this->addMediaConversion('mini')
                     ->crop('crop-center', 70, 70)
                     ->optimize();
@@ -82,8 +82,6 @@ class Candidate extends Model implements HasMedia
             return asset('img/avatar.png');
         } else {
             return str_replace(config('app.url'), config('electo.electo_admin_url'), $this->getFirstMediaUrl('avatar'));
-            return $this->getFirstMediaUrl('avatar');
-            return $this->media->first()->url;
         }
     }
 

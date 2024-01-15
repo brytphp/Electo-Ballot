@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
 
-class RedirectUser
+class RedirectVoter
 {
     /**
      * Handle an incoming request.
@@ -15,6 +15,7 @@ class RedirectUser
      */
     public function handle(Request $request, Closure $next)
     {
+
         $now = Carbon::now();
         $start = Carbon::parse(auth()->user()->election->start_date);
         $end = Carbon::parse(auth()->user()->election->end_date);
@@ -23,7 +24,7 @@ class RedirectUser
             return redirect()->route('voter.ballot.paper', auth()->user()->election->positions()->first()->id);
         }
 
-        return redirect()->route('voter.ballot.success');
+        return redirect()->route('voter.ballot.status');
 
         return $next($request);
     }

@@ -63,8 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'is_voter' => \App\Http\Middleware\IsVoter::class,
-        'redirect_if_is_admin' => \App\Http\Middleware\RedirectUser::class,
+        'redirect_voter' => \App\Http\Middleware\RedirectVoter::class,
         'has_voted' => \App\Http\Middleware\HasVoted::class,
 
     ];
