@@ -7,10 +7,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <a :href="previous" class="btn btn-dark float-left waves-effect waves-light">Back</a>
+                        <a :href="previous" class="btn btn-dark float-left waves-effect waves-light">BACK</a>
 
-                        <button class="btn btn-success float-right waves-effect waves-light" @click="confirmVote">Cast
-                            Vote</button>
+                        <button class="btn btn-success float-right waves-effect waves-light" @click="confirmVote">CAST
+                            VOTE</button>
                     </div>
                 </div>
             </div>

@@ -5,19 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receipt - {{ auth()->user()->election->election }}</title>
+    <title>Receipt - {{ $user->election->election }}</title>
 
     <style>
         /*
  * Reference - https://codepen.io/mmadeira/pen/wWzrwd
  */
-
-        /* basic */
-        *,
-        *:before,
-        *:after {
-            box-sizing: border-box;
-        }
 
         html,
         body {
@@ -31,7 +24,7 @@
 
         /* container */
         .container {
-            width: 320px;
+            width: 300px;
             height: auto;
             border-radius: 5px;
             background-color: white;
@@ -49,11 +42,7 @@
             padding: 16px 32px;
         }
 
-        /* head */
-        .head {
-            display: flex;
-            align-items: center;
-        }
+
 
         .head .logo {
             flex: 1 0 30%;
@@ -79,21 +68,9 @@
         }
 
 
-        .body .info .welcome .username {
-            color: chocolate;
-        }
-
-        .body .info p {
-            color: rosybrown;
-            font-size: 14px;
-        }
-
-        .cart .title {
-            margin-bottom: 16px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            text-transform: capitalize;
+        .username {
+            color: rgb(252, 7, 7);
+            font-size: 24px;
         }
 
         .cart .content {
@@ -129,10 +106,6 @@
             right: -1px;
         }
 
-        .foot img {
-            width: 100%;
-        }
-
         .text-center {
             text-align: center
         }
@@ -145,20 +118,17 @@
         <div class="receipt_box">
             <div class="head">
                 <div class="logo">
-                    <img style="width: 80px; height:80px;" src="{{ auth()->user()->election->logo }}" alt="">
+                    <img style="width: 80px; height:80px;" src="{{ $user->election->logo }}" alt="">
                 </div>
 
                 <div class="number text-center">
-                    <div class="date">{{ auth()->user()->election->election }}</div>
-                    <div class="info text-center">
-                        {{-- <div class="welcome">{{ auth()->user()->voter_id }}</div> --}}
-                    </div>
+                    <div class="date">{{ $user->election->election }}</div>
                 </div>
 
             </div>
             <div class="body">
                 <div class="info text-center">
-                    <div class="welcome"><span class="username">{{ auth()->user()->voter_id }}</span></div>
+                    <div class="welcome"><span class="username">{{ $user->voter_id }}</span></div>
                 </div>
 
                 <div class="cart">
@@ -166,15 +136,14 @@
                         <div class="cart_list  text-center">
                             <div class=" text-center">
                                 <span class="name">You Voted on </span> <br>
-                                <span class="price">{{ auth()->user()->voted_at->format('M d, Y g:i A') }}</span>
+                                <span class="price">{{ $user->voted_at->format('M d, Y g:i A') }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="foot text-center">
-                <img src={!! asset('receipts/' . $qr_code) !!}>
-                {{-- <small class="text-center" style="font-size: 13px">{{ auth()->user()->election->ref }}</small> --}}
+            <div class="foot text-center" style="font-size: 11px; text-transform: uppercase;">
+                {{ $user->election->ref }}
             </div>
         </div>
     </div>

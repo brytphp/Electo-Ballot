@@ -78,16 +78,17 @@
                             BACK
                         </a>
 
-                        <a v-if="ballot.data.position.can_skip == 1" :href="route('voter.ballot.skip', {
+                        <!-- <a v-if="ballot.data.position.can_skip == 1" :href="route('voter.ballot.skip', {
                             position: route().params.position,
                             next: ballot.next
                         })" class="btn btn-danger  waves-effect waves-light">
                             {{ this.ballot.data.position.skip }}
-                        </a>
+                        </a> -->
 
                         <button @click="save" class="btn btn-success float-right waves-effect waves-light"
                             v-if="form.candidates.length > 0">
-                            {{ this.ballot.data.position.next }}
+                            NEXT
+                            <!-- {{ this.ballot.data.position.next }} -->
                         </button>
                     </div>
                 </div>

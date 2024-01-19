@@ -24,7 +24,10 @@
 
                 <div class="alert alert-warning fade show" role="alert">
                     <i class="mdi mdi-alert-outline mr-2"></i>
-                    You may go back to review your selections or click 'Cast Vote' to finally cast your vote.
+                    You may go back to review your selections or click <b class="textsuccess">CAST
+                        VOTE</b> to
+                    finally cast
+                    your vote.
                 </div>
 
             </div>

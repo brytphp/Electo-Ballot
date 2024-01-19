@@ -15,7 +15,6 @@ class RedirectVoter
      */
     public function handle(Request $request, Closure $next)
     {
-
         $now = Carbon::now();
         $start = Carbon::parse(auth()->user()->election->start_date);
         $end = Carbon::parse(auth()->user()->election->end_date);

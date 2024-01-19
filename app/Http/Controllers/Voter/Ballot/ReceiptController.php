@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Voter\Ballot;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -11,37 +12,32 @@ use PDF;
 
 class ReceiptController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth',]);
+    }
     public function download()
     {
         if (is_null(auth()->user()->voted_at)) {
             return redirect()->route('login');
         }
 
-        // try {
-        //     $action = Crypt::decryptString(request()->action);
-        // } catch (DecryptException $e) {
-        //     abort(404);
-        // }
+        $user = auth()->user();
 
-        $path = public_path().'/receipts/qr-code.png';
-        $qr_code = '/qr-code.png';
-        QRCode::text('QR Code Generator for Laravel!')
-            ->setOutfile($path)
-            ->png();
+        // $path = public_path().'/receipts/qr-code.png';
+        // $qr_code = '/qr-code.png';
+        // QRCode::text('QR Code Generator for Laravel!')
+        //     ->setOutfile($path)
+        //     ->png();
 
-        // return view('voter.receipt.receipt', compact('qr_code'));
+        // return view('voter.receipt.receipt',);
 
-        $customPaper = [0, 0, 450.00, 250];
-        $pdf = PDF::loadView('voter.receipt.receipt', compact('qr_code'))->setPaper($customPaper, 'landscape');
+        $customPaper = [0, 0, 350.00, 250];
+        $pdf = PDF::loadView('voter.receipt.receipt', compact('user'))->setPaper($customPaper, 'landscape');
 
         $pdf->render();
         $canvas = $pdf->getDomPDF()->getCanvas();
         $canvas->page_text(290, 775, '{PAGE_NUM}', 10, 8, [0, 0, 0]);
-        // $canvas->page_text(270, 790, 'RESTRICTED', 10, 8, [0, 0, 0]);
-        // $canvas->page_text(270, 20, 'RESTRICTED', 10, 8, [0, 0, 0]);
-
-        return $pdf->stream(auth()->user()->voter_id.'.pdf');
-
-        return back();
+        return $pdf->download($user->voter_id . '.pdf');
     }
 }

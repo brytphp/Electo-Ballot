@@ -6,8 +6,10 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Models\Election;
 use App\Models\Login;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -41,6 +43,16 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         Fortify::loginView(function () {
+
+            $election = Election::first();
+            $now = Carbon::now();
+            $start = Carbon::parse($election->start_date);
+            $end = Carbon::parse($election->end_date);
+
+            if ($now->isBefore($start) || $now->isAfter($end)) {
+                return view('voter.home.status');
+            }
+
             return view('auth.login');
         });
 
@@ -86,7 +98,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('login', function (Request $request) {
-            return Limit::perMinute(5)->by($request->email.$request->ip());
+            return Limit::perMinute(5)->by($request->email . $request->ip());
         });
 
         RateLimiter::for('two-factor', function (Request $request) {
