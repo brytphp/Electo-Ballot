@@ -7,15 +7,18 @@ use App\Models\Election;
 use App\Models\User;
 use App\Models\VoterInclusion;
 use Illuminate\Http\Request;
+use PragmaRX\Countries\Package\Countries;
 
 class VoterUpdateController extends Controller
 {
     public function index()
     {
         $election = Election::first();
+        $countries = new Countries();
+        $countries = $countries->all()->pluck('name.common')->toArray();
 
-        if ($election->enable_exhibition == 'yes' && (\Carbon\Carbon::now()->isBefore($election->exhibition_end_date))) {
-            return view('exhibition.voter-inclusion');
+        if ($election->enable_exhibition == 'YES' && (\Carbon\Carbon::now()->isBefore($election->exhibition_end_date))) {
+            return view('exhibition.voter-inclusion', compact('countries'));
         }
 
         abort(404);

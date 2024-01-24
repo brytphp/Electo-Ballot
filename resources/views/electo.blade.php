@@ -52,7 +52,7 @@
                         <a class="nav-link" href="#how-to-vote" id="how_to_vote_tab">How To Vote</a>
                     </li>
 
-                    @if ($election->enable_exhibition == 'yes' && \Carbon\Carbon::now()->isBefore($election->exhibition_end_date))
+                    @if ($election->enable_exhibition == 'YES' && \Carbon\Carbon::now()->isBefore($election->exhibition_end_date))
                     @endif
 
                 </ul>
@@ -89,7 +89,7 @@
                 <div class="col-lg-5 col-md-8 col-sm-10 ml-lg-auto">
 
                     @if (
-                        $election->enable_exhibition == 'yes' &&
+                        $election->enable_exhibition == 'YES' &&
                             \Carbon\Carbon::now()->between($election->exhibition_start_date, $election->exhibition_end_date))
                         <div class="card overflow-hidden mb-0 mt-5 mt-lg-0  text-danger">
                             <div class="card-header text-center">
