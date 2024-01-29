@@ -23,13 +23,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('queue:restart')->hourly();
-        // $schedule->command('queue:work --tries=3')->runInBackground()->withoutOverlapping()->everyMinute();
-
         $schedule->command('pusher:push')->runInBackground()->withoutOverlapping()->everyMinute();
-
-        $schedule->command('election:automatic')->runInBackground()->withoutOverlapping()->everyMinute();
-        $schedule->command('remind:voters')->runInBackground()->withoutOverlapping()->everyMinute();
 
         // $schedule->command('inspire')->hourly();
     }
@@ -39,12 +33,6 @@ class Kernel extends ConsoleKernel
         $shortSchedule->command('check:phone')->everySeconds(5);
         // $shortSchedule->command('electo:simulate')->everySeconds(5);
         $shortSchedule->command('election:automatic')->everySecond();
-
-        // // this artisan command will run every second
-        // $shortSchedule->command('pusher:push')->everySecond();
-        // $shortSchedule->command('remind:voters')->everySecond();
-        // this artisan command will run every second, its signature will be resolved from container
-        // $shortSchedule->command(\Spatie\ShortSchedule\Tests\Unit\TestCommand::class)->everySecond();
     }
 
     /**

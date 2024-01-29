@@ -32,20 +32,20 @@ class ExhibitionController extends Controller
             $query->where('email', $request->username)->orWhere('phone', $request->username);
         })->where('voter_id', $request->password)->where('role', 'user')->first();
 
-        $link = '<a href="' . route('voter-inclusion') . '" class="text-danger">No record found! Click here to submit your current information for possible update.</br> Thank you.</a>';
+        $link = '<a href="'.route('voter-inclusion').'" class="text-danger">No record found! Click here to submit your current information for possible update.</br> Thank you.</a>';
 
         if (is_null($user)) {
             return back()->withErrors(['username' => 'No record found', '404' => $link])->withInput();
         }
 
         if (empty($user->verified_at)) {
-            $msg = 'Good news ' . $user->first_name . '! You can vote for your favorite candidate(s) with same credentials on ' . $user->election->start_date;
+            $msg = 'Good news '.$user->first_name.'! You can vote for your favorite candidate(s) with same credentials on '.$user->election->start_date;
 
             if (strlen($user->phone) == 10) {
                 send_sms($user->phone, $msg);
             }
 
-            if (!empty($user->email)) {
+            if (! empty($user->email)) {
                 if (filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
                     $user->notify(new VoterVerifiedNotification($msg));
                 }

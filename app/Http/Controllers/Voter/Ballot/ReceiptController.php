@@ -3,10 +3,6 @@
 namespace App\Http\Controllers\Voter\Ballot;
 
 use App\Http\Controllers\Controller;
-use Auth;
-use Crypt;
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Http\Request;
 use LaravelQRCode\Facades\QRCode;
 use PDF;
 
@@ -14,8 +10,9 @@ class ReceiptController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth',]);
+        $this->middleware(['auth']);
     }
+
     public function download()
     {
         if (is_null(auth()->user()->voted_at)) {
@@ -38,6 +35,7 @@ class ReceiptController extends Controller
         $pdf->render();
         $canvas = $pdf->getDomPDF()->getCanvas();
         $canvas->page_text(290, 775, '{PAGE_NUM}', 10, 8, [0, 0, 0]);
-        return $pdf->download($user->voter_id . '.pdf');
+
+        return $pdf->download($user->voter_id.'.pdf');
     }
 }
