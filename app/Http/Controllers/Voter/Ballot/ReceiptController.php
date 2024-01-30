@@ -27,7 +27,7 @@ class ReceiptController extends Controller
         //     ->setOutfile($path)
         //     ->png();
 
-        // return view('voter.receipt.receipt',);
+        // return view('voter.receipt.receipt', compact('user'));
 
         $customPaper = [0, 0, 350.00, 250];
         $pdf = PDF::loadView('voter.receipt.receipt', compact('user'))->setPaper($customPaper, 'landscape');

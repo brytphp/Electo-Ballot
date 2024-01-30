@@ -118,7 +118,16 @@
         <div class="receipt_box">
             <div class="head">
                 <div class="logo">
-                    <img style="width: 80px; height:80px;" src="{{ $user->election->logo }}" alt="">
+                    @php
+                        try {
+                            echo '<img style="width: 80px; height:80px;" src="' . $user->election->logo ?? '/theme/images/logo-png.png' . '" alt="logo">';
+                        } catch (\Exception $e) {
+                            // Do something exceptional
+                        }
+                    @endphp
+
+                    {{-- <img style="width: 80px; height:80px;" src="{{ $user->election->logo }}" alt=""> --}}
+
                 </div>
 
                 <div class="number text-center">
