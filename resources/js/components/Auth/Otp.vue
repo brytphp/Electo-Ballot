@@ -1,13 +1,14 @@
 <template>
     <div ref="formContainer" class="vld-parent">
         <form class="outer-repeater" @submit.prevent="save" @keydown="form.onKeydown($event)">
-            <div class="form-group textcenter" style="">
-                <div style="display: flex; flex-direction: row;" class="pr-5">
-                    <v-otp-input ref="otpInput" input-classes="otp-input form-control" separator="-" :num-inputs="4"
-                        :should-auto-focus="true" :is-input-num="true" @on-change="handleOnChange"
-                        @on-complete="handleOnComplete" />
-                    <!-- <button @click="handleClearInput()" class="btn btn-round btn-icon btn-dark"><i class="mdi mdi-refresh mr-1"></i></button> -->
-                </div>
+            <div class="form-group">
+
+
+                <v-otp-input ref="otpInput" input-classes="otp-input form-control" separator="-" :num-inputs="4"
+                    :should-auto-focus="true" :is-input-num="true" @on-change="handleOnChange"
+                    @on-complete="handleOnComplete" />
+
+
                 <div class="ml-2 text-center pr-5">
                     <has-error :form="form" field="verification_code"></has-error>
                 </div>
@@ -15,6 +16,24 @@
             </div>
         </form>
     </div>
+
+
+    <!-- <div ref="formContainer" class="vld-parent">
+        <form class="outer-repeater" @submit.prevent="save" @keydown="form.onKeydown($event)">
+            <div class="form-group textcenter" style="">
+                <div style="display: flex; flex-direction: row;" class="pr-5">
+                    <v-otp-input ref="otpInput" input-classes="otp-input form-control" separator="-" :num-inputs="4"
+                        :should-auto-focus="true" :is-input-num="true" @on-change="handleOnChange"
+                        @on-complete="handleOnComplete" />
+
+                </div>
+                <div class="ml-2 text-center pr-5">
+                    <has-error :form="form" field="verification_code"></has-error>
+                </div>
+
+            </div>
+        </form>
+    </div> -->
 </template>
 
 <script>

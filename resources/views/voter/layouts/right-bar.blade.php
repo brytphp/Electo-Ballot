@@ -10,7 +10,7 @@
         <!-- Settings -->
         <hr class="mt-0" />
 
-        {!! $election->how_to_vote !!}
+        <div class="mx-3 textjustify"> {!! $election->how_to_vote !!}</div>
 
     </div>
 

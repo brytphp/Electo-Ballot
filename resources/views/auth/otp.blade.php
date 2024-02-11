@@ -32,11 +32,24 @@
             </div>
         @endif
 
+        @env('local')
         {{ auth()->user()->otp }}
+        @endenv
 
-        <div class="otp">
-            <otp></otp>
+
+        <div class="d-flex justify-content-between">
+            <div class="p-2 bg-warning"></div>
+            <div class="p-2 bg-success text-center">
+                <otp></otp>
+            </div>
+            <div class="p-2 bg-danger"></div>
         </div>
+
+        {{--
+            <div class="otp">
+                <otp></otp>
+            </div>
+        --}}
 
 
         <div class="mt-4 text-center mr-lg-5">

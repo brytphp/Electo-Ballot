@@ -182,8 +182,8 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div>
-                                                            <img src="{{ $candidate->getFirstMediaUrl('avatar') }}"
-                                                                alt="" class="rounded img-fluid">
+                                                            <img src="{{ $candidate->avatar }}" alt=""
+                                                                class="rounded img-fluid">
                                                         </div>
 
                                                         <div class="mt-3">
