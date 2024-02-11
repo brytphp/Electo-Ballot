@@ -8,8 +8,6 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
 
-
-
 class OTPNotification extends Notification implements ShouldQueue
 {
     use Queueable, SerializesModels;
@@ -48,7 +46,7 @@ class OTPNotification extends Notification implements ShouldQueue
                 'code' => $this->otp,
             ]
         )
-            ->greeting('🖐' . ucfirst(strtolower($notifiable->first_name)))
+            ->greeting('🖐'.ucfirst(strtolower($notifiable->first_name)))
             ->from($address = config('electo.mail_from_address'), $name = $notifiable->election->email_sender_name)
             ->subject('OTP');
     }

@@ -45,12 +45,6 @@
             <div class=""></div>
         </div>
 
-        {{--
-            <div class="otp">
-                <otp></otp>
-            </div>
-        --}}
-
 
         <div class="mt-4 text-center mr-lg-5">
             Didn't get Code? <br>

@@ -1746,7 +1746,7 @@
     \Carbon\Carbon::__set_state(array(
        'endOfTime' => false,
        'startOfTime' => false,
-       'constructedObjectId' => '00000000000009b40000000000000000',
+       'constructedObjectId' => '00000000000009bc0000000000000000',
        'localMonthsOverflow' => NULL,
        'localYearsOverflow' => NULL,
        'localStrictModeEnabled' => NULL,
@@ -1765,12 +1765,12 @@
       ),
        'dumpLocale' => NULL,
        'dumpDateProperties' => NULL,
-       'date' => '2024-01-31 13:03:35.000000',
+       'date' => '2024-02-11 05:11:11.000000',
        'timezone_type' => 1,
        'timezone' => '+00:00',
     )),
-    'hash' => '6e1d545',
-    'string' => '-.-.- - 6e1d545 (31/01/24)',
+    'hash' => 'f45e5fd',
+    'string' => '-.-.- - f45e5fd (11/02/24)',
   ),
   'view' => 
   array (
@@ -2035,6 +2035,11 @@
         'headers' => 
         array (
           0 => 'API-KEY',
+          1 => 'Authorization',
+          2 => 'Cookie',
+          3 => 'Set-Cookie',
+          4 => 'X-CSRF-TOKEN',
+          5 => 'X-XSRF-TOKEN',
         ),
       ),
     ),

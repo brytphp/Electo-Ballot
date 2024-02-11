@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Electo\OTP;
 use App\Http\Controllers\Controller;
-use App\Notifications\GetVerificationCode;
+use App\Notifications\OTPNotification;
 
 class OPTController extends Controller
 {
@@ -39,7 +39,7 @@ class OPTController extends Controller
 
         if (is_null(auth()->user()->voted_at)) {
             send_sms(auth()->user()->phone, $otp);
-            auth()->user()->notify(new GetVerificationCode($otp));
+            auth()->user()->notify(new OTPNotification($otp));
 
             return back()->with('auth_success', 'Verification code sent.');
         } else {

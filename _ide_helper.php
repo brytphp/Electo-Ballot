@@ -18112,7 +18112,7 @@
                     /**
          * 
          *
-         * @see \Maatwebsite\Excel\Mixins\DownloadCollection::downloadExcel()
+         * @see \Maatwebsite\Excel\Mixins\DownloadCollectionMixin::downloadExcel()
          * @param string $fileName
          * @param string|null $writerType
          * @param mixed $withHeadings
@@ -18126,7 +18126,7 @@
                     /**
          * 
          *
-         * @see \Maatwebsite\Excel\Mixins\StoreCollection::storeExcel()
+         * @see \Maatwebsite\Excel\Mixins\StoreCollectionMixin::storeExcel()
          * @param string $filePath
          * @param string|null $disk
          * @param string|null $writerType
@@ -24712,6 +24712,64 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->mergeConstraintsFrom($from);
+            }
+             
+                /**
+             * 
+             *
+             * @see \Maatwebsite\Excel\Mixins\DownloadQueryMacro::__invoke()
+             * @param string $fileName
+             * @param string|null $writerType
+             * @param mixed $withHeadings
+             * @static 
+             */ 
+            public static function downloadExcel($fileName, $writerType = null, $withHeadings = false)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::downloadExcel($fileName, $writerType, $withHeadings);
+            }
+             
+                /**
+             * 
+             *
+             * @see \Maatwebsite\Excel\Mixins\StoreQueryMacro::__invoke()
+             * @param string $filePath
+             * @param string|null $disk
+             * @param string|null $writerType
+             * @param mixed $withHeadings
+             * @static 
+             */ 
+            public static function storeExcel($filePath, $disk = null, $writerType = null, $withHeadings = false)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::storeExcel($filePath, $disk, $writerType, $withHeadings);
+            }
+             
+                /**
+             * 
+             *
+             * @see \Maatwebsite\Excel\Mixins\ImportMacro::__invoke()
+             * @param string $filename
+             * @param string|null $disk
+             * @param string|null $readerType
+             * @static 
+             */ 
+            public static function import($filename, $disk = null, $readerType = null)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::import($filename, $disk, $readerType);
+            }
+             
+                /**
+             * 
+             *
+             * @see \Maatwebsite\Excel\Mixins\ImportAsMacro::__invoke()
+             * @param string $filename
+             * @param callable $mapping
+             * @param string|null $disk
+             * @param string|null $readerType
+             * @static 
+             */ 
+            public static function importAs($filename, $mapping, $disk = null, $readerType = null)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::importAs($filename, $mapping, $disk, $readerType);
             }
              
                 /**
