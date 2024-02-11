@@ -38,11 +38,11 @@
 
 
         <div class="d-flex justify-content-between">
-            <div class="p-2 bg-warning"></div>
-            <div class="p-2 bg-success text-center">
+            <div class=""></div>
+            <div class="text-center">
                 <otp></otp>
             </div>
-            <div class="p-2 bg-danger"></div>
+            <div class=""></div>
         </div>
 
         {{--
