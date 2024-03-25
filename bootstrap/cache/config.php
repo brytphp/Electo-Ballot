@@ -1746,7 +1746,7 @@
     \Carbon\Carbon::__set_state(array(
        'endOfTime' => false,
        'startOfTime' => false,
-       'constructedObjectId' => '00000000000009bc0000000000000000',
+       'constructedObjectId' => '00000000000009b70000000000000000',
        'localMonthsOverflow' => NULL,
        'localYearsOverflow' => NULL,
        'localStrictModeEnabled' => NULL,
@@ -1765,12 +1765,12 @@
       ),
        'dumpLocale' => NULL,
        'dumpDateProperties' => NULL,
-       'date' => '2024-02-11 05:11:11.000000',
+       'date' => '2024-02-11 05:26:11.000000',
        'timezone_type' => 1,
        'timezone' => '+00:00',
     )),
-    'hash' => 'f45e5fd',
-    'string' => '-.-.- - f45e5fd (11/02/24)',
+    'hash' => '8f76250',
+    'string' => '-.-.- - 8f76250 (11/02/24)',
   ),
   'view' => 
   array (
@@ -1807,11 +1807,12 @@
       'port' => 2304,
     ),
     'editor' => 'phpstorm',
-    'remote_sites_path' => '',
-    'local_sites_path' => '',
+    'remote_sites_path' => NULL,
+    'local_sites_path' => NULL,
     'include_vendors' => true,
     'capture_ajax' => true,
     'add_ajax_timing' => false,
+    'ajax_handler_auto_show' => true,
     'error_handler' => false,
     'clockwork' => false,
     'collectors' => 
@@ -1839,9 +1840,24 @@
       'cache' => false,
       'models' => true,
       'livewire' => true,
+      'jobs' => false,
     ),
     'options' => 
     array (
+      'time' => 
+      array (
+        'memory_usage' => false,
+      ),
+      'messages' => 
+      array (
+        'trace' => true,
+      ),
+      'memory' => 
+      array (
+        'reset_peak' => false,
+        'with_baseline' => false,
+        'precision' => 0,
+      ),
       'auth' => 
       array (
         'show_name' => true,
@@ -1866,22 +1882,44 @@
         'hints' => false,
         'show_copy' => false,
         'slow_threshold' => false,
+        'memory_usage' => false,
+        'soft_limit' => 100,
+        'hard_limit' => 500,
       ),
       'mail' => 
       array (
-        'full_log' => false,
+        'timeline' => false,
+        'show_body' => true,
       ),
       'views' => 
       array (
         'timeline' => false,
         'data' => false,
+        'group' => 50,
         'exclude_paths' => 
         array (
+          0 => 'vendor/filament',
         ),
       ),
       'route' => 
       array (
         'label' => true,
+      ),
+      'session' => 
+      array (
+        'hiddens' => 
+        array (
+        ),
+      ),
+      'symfony_request' => 
+      array (
+        'hiddens' => 
+        array (
+        ),
+      ),
+      'events' => 
+      array (
+        'data' => false,
       ),
       'logs' => 
       array (
@@ -1894,8 +1932,11 @@
     ),
     'inject' => true,
     'route_prefix' => '_debugbar',
+    'route_middleware' => 
+    array (
+    ),
     'route_domain' => NULL,
-    'theme' => 'auto',
+    'theme' => 'dark',
     'debug_backtrace_limit' => 50,
   ),
   'dompdf' => 
