@@ -32,7 +32,7 @@ class OPTController extends Controller
     public function resend(OTP $otp)
     {
         if (now()->isBefore(auth()->user()->otp_expires_at)) {
-            return back()->with('auth_error', 'Please request a new code in 3 minutes time');
+            return back()->with('auth_error', 'Please request a new code in '.auth()->user()->otp_expires_at->diff(now())->format('%I:%S').' minutes time');
         }
 
         $otp = $otp->generate();

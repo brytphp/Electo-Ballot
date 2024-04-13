@@ -18,7 +18,7 @@ class OTP
     {
         auth()->user()->update([
             'otp' => $code,
-            'otp_expires_at' => Carbon::now()->addMinutes(3),
+            'otp_expires_at' => Carbon::now()->addMinutes(10),
         ]);
     }
 

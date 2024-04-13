@@ -30,7 +30,7 @@ class ExhibitionController extends Controller
 
         $user = User::where(function ($query) use ($request) {
             $query->where('email', $request->username)->orWhere('phone', $request->username);
-        })->where('voter_id', $request->password)->where('role', 'user')->first();
+        })->where('voter_id', $request->password)->where('access_role', 'user')->first();
 
         $link = '<a href="'.route('voter-inclusion').'" class="text-danger">No record found! Click here to submit your current information for possible update.</br> Thank you.</a>';
 
@@ -47,7 +47,7 @@ class ExhibitionController extends Controller
 
             if (! empty($user->email)) {
                 if (filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
-                    $user->notify(new VoterVerifiedNotification($msg));
+                    // $user->notify(new VoterVerifiedNotification($msg));
                 }
             }
 

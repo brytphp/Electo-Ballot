@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Ballot;
 use App\Events\DrawChart;
 use App\Events\TotalVotesCast;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
@@ -18,10 +17,13 @@ class VoteController extends Controller
      */
     public function __invoke(Request $request)
     {
+
+        $voted_at = now();
+
         foreach (auth()->user()->votes as $vote) {
             $agent = new Agent();
             $vote->update([
-                'voted_at' => now(),
+                'voted_at' => $voted_at,
                 'ref' => auth()->user()->election->ref,
                 'ip' => $request->getClientIp(),
                 'agent' => $request->server('HTTP_USER_AGENT'),
@@ -32,7 +34,7 @@ class VoteController extends Controller
         }
 
         auth()->user()->update([
-            'voted_at' => Carbon::now(),
+            'voted_at' => $voted_at,
         ]);
 
         $election = auth()->user()->election;

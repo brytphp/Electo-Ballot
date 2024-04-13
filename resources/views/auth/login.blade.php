@@ -59,8 +59,8 @@
                                 class="text-uppercase">{{ $election->username_title ?? 'Email or Phone' }}</label>
                             <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
                                 id="email"
-                                placeholder="Enter {{ str()->title($election->username_title) ?? 'Email or Phone' }}"
-                                required autocomplete="email" value="{{ $email ?? null }}">
+                                placeholder="{{ str()->title($election->username_title) ?? 'Email or Phone' }}" required
+                                autocomplete="email" value="{{ $email ?? null }}">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
