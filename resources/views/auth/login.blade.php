@@ -68,10 +68,6 @@
                             @enderror
                         </div>
 
-
-
-
-
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" name="remember" id="customControlInline"
                                 {{ old('remember') ? 'checked' : '' }}>
@@ -87,11 +83,6 @@
                             <a href="/" class="text-muted"><i class="mdi mdi-home mr-1"></i>
                                 Home</a>
                         </div>
-
-
-
-
-
 
                     </form>
                 </div>

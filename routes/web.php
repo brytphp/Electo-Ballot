@@ -32,11 +32,14 @@ Route::prefix('verify')->group(function () {
     Route::get('/resend', [OPTController::class, 'resend'])->name('voter.verification.resend');
 });
 
-Route::prefix('exhibition')->group(function () {
-    Route::get('/', [ExhibitionController::class, 'index'])->name('voter.exhibition');
-    Route::post('/', [ExhibitionController::class, 'submit'])->name('voter.exhibition.submit');
-    Route::get('/voter/{voter}', [ExhibitionController::class, 'details'])->name('voter.exhibition.details');
-    Route::post('/voter/{user}/update', [ExhibitionController::class, 'update'])->name('voter.exhibition.update');
+Route::group([
+    'prefix' => 'exhibition',
+    'as' => 'exhibition.',
+    // 'middleware' => 'auth'
+], function () {
+    Route::get('/', [ExhibitionController::class, 'index'])->name('login.form');
+    Route::post('/', \App\Http\Controllers\Exhibition\AuthController::class)->name('login.submit');
+    Route::get('/voter/{voter}', [ExhibitionController::class, 'voter'])->name('voter');
 });
 
 Route::get('/voter-inclusion', [VoterUpdateController::class, 'index'])->name('voter-inclusion');

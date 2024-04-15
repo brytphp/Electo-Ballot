@@ -119,7 +119,7 @@ function format_phone_number($number)
         $number = str_replace('+233', '0', $number);
     }
 
-    if (substr($number, 0, 4) == '233') {
+    if (substr($number, 0, 3) == '233') {
         $number = str_replace('233', '0', $number);
     }
 

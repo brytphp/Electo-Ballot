@@ -103,7 +103,7 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <a href="{{ route('voter.exhibition') }}"
+                                        <a href="{{ route('exhibition.login.form') }}"
                                             class="btn btn-danger w-md btn-block">Check Your Details Now</a>
                                     </div>
 

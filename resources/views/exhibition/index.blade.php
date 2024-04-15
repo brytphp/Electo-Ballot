@@ -28,7 +28,7 @@
                     </span>
                 </div>
                 <div class="p-2">
-                    <form class="form-horizontal" method="POST" action="{{ route('voter.exhibition.submit') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('exhibition.login.submit') }}">
                         @csrf
 
                         @if ($errors->has('404'))
@@ -70,10 +70,10 @@
                             <button class="btn btn-dark btn-block waves-effect waves-light" type="submit">Submit</button>
                         </div>
 
-                        <div class="mt-2 text-center text-info">
+                        {{-- <div class="mt-2 text-center text-info">
                             <a href="{{ route('voter-inclusion') }}" class="text-info">
                                 Click here to submit your current information </a>
-                        </div>
+                        </div> --}}
 
                         <div class="mt-2 text-center">
                             <a href="/" class="text-muted"><i class="mdi mdi-home mr-1"></i>

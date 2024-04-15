@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'prefix' => 'api',
         'as' => 'api.',
     ], function () {
+
         Route::group([
             'prefix' => 'auth',
             'as' => 'auth.',
@@ -27,4 +28,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::post('/verify-otp', \App\Http\Controllers\Auth\OTPVerificationController::class)->name('verify-otp');
         });
     });
+});
+
+Route::group([
+    'prefix' => 'api/exhibition',
+    'as' => 'api.exhibition.',
+    // 'middleware' => 'auth:sanctum'
+], function () {
+    Route::patch('/update/{user}', \App\Http\Controllers\Api\Exhibition\UpdateRegister::class)->name('update.register');
+    Route::post('/confirmed/{user}', \App\Http\Controllers\Api\Exhibition\VoterDetailsConfirmed::class)->name('confirmed');
 });

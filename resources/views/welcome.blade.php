@@ -137,7 +137,7 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <a href="{{ route('voter.exhibition') }}"
+                                        <a href="{{ route('exhibition.login.form') }}"
                                             class="btn btn-danger w-md btn-block">Check Your Details Now</a>
                                     </div>
 
@@ -243,7 +243,10 @@
                                                                 <tbody>
                                                                     @foreach ($position->candidates as $key => $candidate)
                                                                         @php
-                                                                            if ($candidate->tally == 0 || $position->votes() + $skipped == 0) {
+                                                                            if (
+                                                                                $candidate->tally == 0 ||
+                                                                                $position->votes() + $skipped == 0
+                                                                            ) {
                                                                                 $percentage = 0;
                                                                             } else {
                                                                                 $percentage = @round(($candidate->tally / ($position->votes() + $skipped) ?: 1) * 100, 2);
