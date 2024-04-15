@@ -42,11 +42,8 @@
     <nav class="navbar navbar-expand-lg navigation fixed-top sticky">
         <div class="container">
             <a class="navbar-logo" href="/">
-                {{-- <img src="theme/images/logo-dark.png" alt="" height="19" class="logo logo-dark">
-                <img src="theme/images/logo-light.png" alt="" height="19" class="logo logo-light"> --}}
-
-                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-dark">
-                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-light">
+                <img src="theme/images/logo-dark.png" alt="" height="19" class="logo logo-dark">
+                <img src="theme/images/logo-light.png" alt="" height="19" class="logo logo-light">
             </a>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
@@ -60,27 +57,14 @@
                         <a class="nav-link active" href="#home">Home</a>
                     </li>
 
-                    @if ($election->provisional_results == 1 && \Carbon\Carbon::now()->isAfter($election->end_date))
-                        <li class="nav-item">
-                            <a class="nav-link" href="#results">Results</a>
-                        </li>
-                    @endif
-
                     <li class="nav-item">
                         <a class="nav-link" href="#candidates">Candidates</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="#how-to-vote" id="how_to_vote_tab">How To Vote</a>
                     </li>
 
-                    @env('local')
-                    <div class="ml-lg-2">
-                        <a href="{{ route('auth.sign-in') }}" class="btn btn-outline-success w-xs">Login</a>
-                    </div>
-                    @endenv
-
-                    @if ($election->enable_exhibition == 'yes' && \Carbon\Carbon::now()->isBefore($election->exhibition_end_date))
+                    @if ($election->enable_exhibition == 'YES' && \Carbon\Carbon::now()->isBefore($election->exhibition_end_date))
                     @endif
 
                 </ul>
@@ -91,15 +75,10 @@
                     </div>
                 @endif
 
-
-
-
-
-
-
             </div>
         </div>
     </nav>
+
 
     <!-- hero section start -->
     <section class="section hero-section bg-ico-hero"
@@ -123,7 +102,7 @@
                 <div class="col-lg-5 col-md-8 col-sm-10 ml-lg-auto">
 
                     @if (
-                        $election->enable_exhibition == 'yes' &&
+                        $election->enable_exhibition == 'YES' &&
                             \Carbon\Carbon::now()->between($election->exhibition_start_date, $election->exhibition_end_date))
                         <div class="card overflow-hidden mb-0 mt-5 mt-lg-0  text-danger">
                             <div class="card-header text-center">
@@ -156,17 +135,10 @@
                                             class="counter-number ico-countdown"></div>
                                     </div>
 
-
-
                                     @if ($election->is_active && $election->is_sealed)
-                                        <hr>
-                                        <h1 class="fw-semibold text-center">TOTAL VOTE CAST <br>
-                                            {{ $election->voted->count() }}/{{ $election->register->count() }}</h1>
-
-
                                         <div class="mt-4">
-                                            <a href="{{ route('login') }}"
-                                                class="btn btn-success w-md btn-block">Vote Now</a>
+                                            <a href="{{ route('login') }}" class="btn btn-success w-md btn-block">Vote
+                                                Now</a>
                                         </div>
                                     @endif
 
@@ -183,192 +155,6 @@
             <!-- end row -->
         </div>
         <!-- end container -->
-
-        <div class="container" id="results">
-
-
-            @if ($election->provisional_results == 1 && \Carbon\Carbon::now()->isAfter($election->end_date))
-                <div class="row mt-5">
-                    <div class="col-lg-12">
-                        <div class="text-center mb-5 mt-5">
-                            <h4 class="text-uppercase text-white">PROVISIONAL RESUTS</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-12">
-
-                    <div id="{{ $election->slug }}_results" class="accordion custom-accordion">
-
-                        @foreach ($election->positions as $position)
-                            @php
-                                $skipped = $position->skipped_votes->count();
-                            @endphp
-
-                            <div class="mb-3">
-                                <a href="#{{ $position->slug }}_results" class="accordion-list"
-                                    data-toggle="collapse" aria-expanded=" {{ $loop->first ? 'true' : 'false' }}"
-                                    aria-controls="{{ $position->slug }}">
-
-                                    <div>{{ $position->position }}</div>
-                                    <i class="mdi mdi-minus accor-plus-icon"></i>
-
-                                </a>
-
-                                <div id="{{ $position->slug }}_results"
-                                    class="collapse {{ $loop->first ? 'show' : 'hide' }}"
-                                    data-parent="#{{ $election->slug }}_results">
-                                    <div class="card-body">
-
-                                        <div class="row nogutters">
-                                            <div class="col-md-12">
-                                                <div class="card text-justify team-box">
-                                                    <div class="card-header rounded">
-                                                        <strong>{{ $position->position }} - Provisional Resuts</strong>
-                                                    </div>
-
-                                                    <div class="card-body">
-                                                        <div class="table-responsive">
-                                                            <table
-                                                                class="table table-nowrap table-hover tabe-secondary table-centered mb-0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th style="width: 2%">Srl.</th>
-                                                                        <th style="width: 1%">&nbsp;</th>
-                                                                        <th>Candidate</th>
-                                                                        <th class="text-center">Total Votes</th>
-                                                                        <th colspan="2">Percentage</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @foreach ($position->candidates as $key => $candidate)
-                                                                        @php
-                                                                            if (
-                                                                                $candidate->tally == 0 ||
-                                                                                $position->votes() + $skipped == 0
-                                                                            ) {
-                                                                                $percentage = 0;
-                                                                            } else {
-                                                                                $percentage = @round(($candidate->tally / ($position->votes() + $skipped) ?: 1) * 100, 2);
-                                                                            }
-
-                                                                        @endphp
-
-
-
-                                                                        <tr>
-                                                                            <td>
-                                                                                No {{ $key + 1 }}.
-                                                                            </td>
-
-                                                                            <td>
-
-                                                                                <div class="team">
-                                                                                    <a href="javascript: void(0);"
-                                                                                        class="team-member">
-                                                                                        <img src="{{ $candidate->getFirstMediaUrl('avatar') }}"
-                                                                                            class="rounded-circle avatar-xs"
-                                                                                            alt="">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <h5
-                                                                                    class="text-truncate font-size-14 m-0">
-                                                                                    <a href="javascript: void(0);"
-                                                                                        class="text-dark">{{ $candidate->first_name }}
-                                                                                        {{ $candidate->other_names }}</a>
-                                                                                </h5>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <div class="text-center">
-                                                                                    <h5
-                                                                                        class="text-truncate font-size-14 m-0">
-                                                                                        <a href="javascript: void(0);"
-                                                                                            class="text-dark">{{ $candidate->tally }}</a>
-                                                                                    </h5>
-                                                                                </div>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <div class="">
-                                                                                    <div class="progress">
-                                                                                        <div class="progress-bar bg-success"
-                                                                                            role="progressbar"
-                                                                                            style="width: {{ $percentage }}%;"
-                                                                                            aria-valuenow="{{ $percentage }}"
-                                                                                            aria-valuemin="0"
-                                                                                            aria-valuemax="100">
-                                                                                            {{ $percentage }}%</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <div class="text-center">
-                                                                                    <h5
-                                                                                        class="text-truncate font-size-14 m-0">
-                                                                                        <a href="javascript: void(0);"
-                                                                                            class="text-dark">{{ $percentage }}%</a>
-                                                                                    </h5>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                    @endforeach
-                                                                    @if ($skipped > 0)
-                                                                        @php
-
-                                                                            $skipped_percentage = @round(($skipped / ($position->votes() + $skipped) ?: 1) * 100, 2);
-                                                                        @endphp
-
-                                                                        <tr class="bg-dark text-light">
-                                                                            <td> &nbsp; </td>
-                                                                            <td> &nbsp; </td>
-                                                                            <td>No Votes</td>
-                                                                            <td class="text-center">
-                                                                                {{ $skipped }}</td>
-                                                                            <td>
-                                                                                <div class="">
-                                                                                    <div class="progress">
-                                                                                        <div class="progress-bar bg-danger"
-                                                                                            role="progressbar"
-                                                                                            style="width: {{ $skipped_percentage }}%;"
-                                                                                            aria-valuenow="{{ $skipped_percentage }}"
-                                                                                            aria-valuemin="0"
-                                                                                            aria-valuemax="100">
-                                                                                            {{ $skipped_percentage }}%
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td class="text-center">
-                                                                                {{ $skipped_percentage }}%</td>
-                                                                        </tr>
-                                                                    @endif
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-
-                </div>
-            @endif
-
-        </div>
 
         <section class="section" id="candidates">
             <div class="container">
@@ -398,9 +184,7 @@
 
                                 </a>
 
-                                <div id="{{ $position->slug }}"
-                                    class="collapse {{ $loop->first ? 'show' : 'hide' }}"
-                                    data-parent="#{{ $election->slug }}">
+                                <div id="{{ $position->slug }}" class="collapse show">
                                     {{-- {{ $loop->first ? 'show' : 'hide' }} --}}
                                     <div class="card-body">
                                         <div class="row nogutters">
@@ -416,7 +200,7 @@
 
                                                             <div class="card-body">
                                                                 <div>
-                                                                    <img src="{{ $candidate->getFirstMediaUrl('avatar') }}"
+                                                                    <img src="{{ $candidate->avatar }}"
                                                                         alt="" class="rounded img-fluid">
                                                                 </div>
 
@@ -444,8 +228,7 @@
             </div>
             <!-- end container -->
         </section>
-
-
+        <!-- end container -->
     </section>
     <!-- Team end -->
 
@@ -582,11 +365,11 @@
 
     <script src="theme/js/app.js"></script>
 
-    <a href="//www.dmca.com/Protection/Status.aspx?ID=4c2af808-9a90-4211-98c2-6b3a799d6ba2"
+    {{-- <a href="//www.dmca.com/Protection/Status.aspx?ID=4c2af808-9a90-4211-98c2-6b3a799d6ba2"
         title="DMCA.com Protection Status" class="dmca-badge"> <img
             src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=4c2af808-9a90-4211-98c2-6b3a799d6ba2"
             alt="DMCA.com Protection Status" /></a>
-    <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+    <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script> --}}
 
 </body>
 

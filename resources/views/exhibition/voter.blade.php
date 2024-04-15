@@ -21,9 +21,11 @@
                     <div class="card-body">
 
                         <div class="text-center text-danger p-2">
-                            <h4 class="font-wight-bold text-uppercase">{{ $voter->election->election }} Countdown</h4>
-                            <span> @include('partials.counter', ['election' => $election])</span>
+                            <h4 class="font-wight-bold text-uppercase">{{ $voter->election->election }} EXHIBITION</h4>
 
+                            <div class="alert alert-success" role="alert">
+                                <b>Please verify your personal information to get your account ready to vote.</b>
+                            </div>
                         </div>
 
                         <table class="table tablestriped">

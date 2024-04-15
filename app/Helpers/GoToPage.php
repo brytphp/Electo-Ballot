@@ -3,7 +3,7 @@
 function goto_page($candidate)
 {
     $pages = [
-        'f0e0e111-f61b-4817-8154-f324f6d2d362' => 7,
+        '0907602a-43ee-4490-8351-b6caa2a57be8' => 7,
 
         '75bbfa89-833f-49b2-9353-77649d95ec06' => 10,
         '0420ba32-e146-47e7-a0e9-c17b7076ab82' => 12,

@@ -43,7 +43,7 @@ class VoteController extends Controller
             event(new TotalVotesCast($election));
             event(new DrawChart($election));
         } catch (\Throwable $th) {
-            send_sms('233248130682', 'Pusher error');
+            // send_sms('233248130682', 'Pusher error');
         }
 
         try {

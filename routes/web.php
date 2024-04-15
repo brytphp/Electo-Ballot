@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
+    return view('welcome');
     // return view('index');
-    return view('electo');
+    // return view('electo');
 })->name('index');
 
 Route::get('/home', RedirectController::class)->name('home');
@@ -41,6 +41,8 @@ Route::group([
     Route::post('/', \App\Http\Controllers\Exhibition\AuthController::class)->name('login.submit');
     Route::get('/voter/{voter}', [ExhibitionController::class, 'voter'])->name('voter');
 });
+
+
 
 Route::get('/voter-inclusion', [VoterUpdateController::class, 'index'])->name('voter-inclusion');
 Route::post('/voter-inclusion', [VoterUpdateController::class, 'submit'])->name('voter-inclusion.submit');

@@ -44,11 +44,8 @@
     <nav class="navbar navbar-expand-lg navigation fixed-top sticky">
         <div class="container">
             <a class="navbar-logo" href="/">
-                {{-- <img src="theme/images/logo-dark.png" alt="" height="19" class="logo logo-dark">
-                <img src="theme/images/logo-light.png" alt="" height="19" class="logo logo-light"> --}}
-
-                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-dark">
-                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-light">
+                <img src="theme/images/logo-dark.png" alt="" height="19" class="logo logo-dark">
+                <img src="theme/images/logo-light.png" alt="" height="19" class="logo logo-light">
             </a>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
@@ -59,24 +56,17 @@
             <div class="collapse navbar-collapse" id="topnav-menu-content">
                 <ul class="navbar-nav ml-auto" id="topnav-menu">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/#home">Home</a>
+                        <a class="nav-link active" href="/">Home</a>
                     </li>
-
-                    @if ($election->provisional_results == 1 && \Carbon\Carbon::now()->isAfter($election->end_date))
-                        <li class="nav-item">
-                            <a class="nav-link" href="/#results">Results</a>
-                        </li>
-                    @endif
 
                     <li class="nav-item">
                         <a class="nav-link" href="/#candidates">Candidates</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="/#how-to-vote" id="how_to_vote_tab">How To Vote</a>
                     </li>
 
-                    @if ($election->enable_exhibition == 'yes' && \Carbon\Carbon::now()->isBefore($election->exhibition_end_date))
+                    @if ($election->enable_exhibition == 'YES' && \Carbon\Carbon::now()->isBefore($election->exhibition_end_date))
                     @endif
 
                 </ul>
