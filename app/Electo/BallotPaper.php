@@ -4,6 +4,7 @@ namespace App\Electo;
 
 use App\Models\Election;
 use App\Models\Position;
+use Illuminate\Support\Facades\Cache;
 
 class BallotPaper
 {
@@ -11,7 +12,10 @@ class BallotPaper
 
     public function __construct()
     {
-        $this->election = Election::first();
+        $this->election = Cache::remember('election', 2700, function () {
+            return Election::first();
+        });
+        // $this->election = Election::first();
     }
 
     public function ballotPaper()

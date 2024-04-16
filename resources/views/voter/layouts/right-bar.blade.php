@@ -22,23 +22,18 @@
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0">WELCOME {{ auth()->user()->first_name }}!</h5>
+                    <h5 class="modal-title mt-0">Hi {{ auth()->user()->first_name }},</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    <h4>Let's get started...</h4>
-                    <p>
-                        Please take few seconds to go through the election process.
-                    </p>
-
                     {!! $election->how_to_vote !!}
 
-                    <strong>
-                        Kindly click on <i class="bx bx-help-circle bx-tada text-danger"></i> at the top right corner
-                        for more help.
+                    <strong class="text-uppercase">
+                        KINDLY CLICK ON <i class="bx bx-help-circle bx-tada text-danger"></i> AT THE TOP RIGHT CORNER TO
+                        SHOW THIS AGAIN.
                     </strong>
                 </div>
 

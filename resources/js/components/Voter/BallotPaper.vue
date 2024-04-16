@@ -30,7 +30,8 @@
             <div class="row justify-content-center" v-if="isLoading == false">
                 <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4" v-for="(candidate, index) in ballot.data.candidates"
                     :key="index">
-                    <div class="card text-center team-box rounded h100" @click="toggleCandidate(candidate.id, index + 1)">
+                    <div class="card text-center team-box rounded h100"
+                        @click="toggleCandidate(candidate.id, index + 1)">
 
                         <div class="card-body ballot" :class="form.candidates.includes(candidate.id) ? 'voted' : ''">
                             <div class="cardheader rounded  border-bottom bg-faded text-dark">
@@ -52,28 +53,29 @@
             <div class="card">
                 <div class="card-body">
                     <div v-if="this.ballot.data.position.unopposed == 1">
-                        <a :href="route('voter.ballot.paper', {
+                        <a :disabled="form.busy" :href="route('voter.ballot.paper', {
                             position: ballot.back
                         })" v-if="route().params.position != ballot.data.first.pid"
                             class="btn btn-dark  waves-effect waves-light mr-2">
                             BACK
                         </a>
 
-                        <a :href="route('voter.ballot.skip', {
+                        <a :disabled="form.busy" :href="route('voter.ballot.skip', {
                             position: route().params.position,
                             next: ballot.next
                         })" class="btn btn-danger  waves-effect waves-light">
                             {{ this.ballot.data.position.skip }}
                         </a>
 
-                        <button @click="save" class="btn btn-success float-right waves-effect waves-light"> {{
-                            this.ballot.data.position.next }}</button>
+                        <button @click="save" :disabled="form.busy"
+                            class="btn btn-success float-right waves-effect waves-light"> {{
+                                this.ballot.data.position.next }}</button>
                     </div>
                     <div v-else>
 
                         <a :href="route('voter.ballot.paper', {
                             position: ballot.back
-                        })" v-if="route().params.position != ballot.data.first.pid"
+                        })" :disabled="form.busy" v-if="route().params.position != ballot.data.first.pid"
                             class="btn btn-dark  waves-effect waves-light mr-2">
                             BACK
                         </a>
@@ -85,7 +87,8 @@
                             {{ this.ballot.data.position.skip }}
                         </a> -->
 
-                        <button @click="save" class="btn btn-success float-right waves-effect waves-light"
+                        <button :disabled="form.busy" @click="save"
+                            class="btn btn-success float-right waves-effect waves-light"
                             v-if="form.candidates.length > 0">
                             NEXT
                             <!-- {{ this.ballot.data.position.next }} -->

@@ -24,6 +24,8 @@ class UpdateRegister extends Controller
             'phone' => format_phone_number($request->phone),
             'country_code' => $request->country_code,
             'verified_at' => now(),
+            'email_checked_at' => now(),
+            'phone_checked_at' => now(),
             'system_checked_phone_at' => now(),
         ]);
 

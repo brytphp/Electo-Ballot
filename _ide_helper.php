@@ -20766,17 +20766,6 @@ namespace Illuminate\Validation {
             }
     }
 
-namespace Illuminate\Database\Eloquent {
-            /**
-     * 
-     *
-     * @template TKey of array-key
-     * @template TModel of \Illuminate\Database\Eloquent\Model
-     * @extends \Illuminate\Support\Collection<TKey, TModel>
-     */        class Collection {
-            }
-    }
-
 namespace Spatie\MediaLibrary\MediaCollections\Models\Collections {
             /**
      * 
@@ -20785,6 +20774,17 @@ namespace Spatie\MediaLibrary\MediaCollections\Models\Collections {
      * @template TModel of \Spatie\MediaLibrary\MediaCollections\Models\Media
      * @extends Collection<TKey, TModel>
      */        class MediaCollection {
+            }
+    }
+
+namespace Illuminate\Database\Eloquent {
+            /**
+     * 
+     *
+     * @template TKey of array-key
+     * @template TModel of \Illuminate\Database\Eloquent\Model
+     * @extends \Illuminate\Support\Collection<TKey, TModel>
+     */        class Collection {
             }
     }
 

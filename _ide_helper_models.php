@@ -1,6 +1,7 @@
 <?php
 
 // @formatter:off
+// phpcs:ignoreFile
 /**
  * A helper file for your Eloquent Models
  * Copy the phpDocs from this file to the correct Model,
@@ -31,8 +32,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Activitylog\Models\Activity> $activities
  * @property-read int|null $activities_count
- * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Media|null $avatar
  * @property-read \App\Models\Election|null $election
+ * @property-read mixed $avatar
  * @property-read mixed $pic
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
@@ -309,8 +310,13 @@ namespace App\Models{
  * @property int|null $order_column
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $extension
  * @property-read mixed $url
+ * @property-read mixed $human_readable_size
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @property-read mixed $original_url
+ * @property-read mixed $preview_url
+ * @property-read mixed $type
  * @method static \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, static> all($columns = ['*'])
  * @method static \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, static> get($columns = ['*'])
  * @method static \Illuminate\Database\Eloquent\Builder|Media newModelQuery()

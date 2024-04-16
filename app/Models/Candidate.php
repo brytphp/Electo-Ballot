@@ -71,11 +71,6 @@ class Candidate extends Model implements HasMedia
             });
     }
 
-    public function avatar()
-    {
-        return $this->hasOne(Media::class, 'model_id', 'id');
-    }
-
     public function getAvatarAttribute()
     {
         if ($this->media->isEmpty()) {

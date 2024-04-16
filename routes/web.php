@@ -42,8 +42,6 @@ Route::group([
     Route::get('/voter/{voter}', [ExhibitionController::class, 'voter'])->name('voter');
 });
 
-
-
 Route::get('/voter-inclusion', [VoterUpdateController::class, 'index'])->name('voter-inclusion');
 Route::post('/voter-inclusion', [VoterUpdateController::class, 'submit'])->name('voter-inclusion.submit');
 

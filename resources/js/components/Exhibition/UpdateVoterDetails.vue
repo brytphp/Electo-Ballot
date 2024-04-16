@@ -5,10 +5,10 @@
             <div class="contact-links d-flex font-size-20">
                 <div class="flex-fill">
                     <button type="button" class="btn btn-outline-dark  waves-effect waves-light " data-toggle="modal"
-                        data-backdrop="static" data-target="#myModal">Update My
+                        data-backdrop="static" :disabled="form.busy" data-target="#myModal">Update My
                         Details</button>
 
-                    <button @click="confirmDetails()" type="button"
+                    <button @click="confirmDetails()" type="button" :disabled="form.busy"
                         class="btn float-left btn-outline-success waves-effect waves-light float-right">
                         This Looks Good
                     </button>
