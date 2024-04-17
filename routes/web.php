@@ -55,6 +55,11 @@ Route::patch('/fcm-token', [FirebaseController::class, 'updateToken'])->name('up
 
 Route::post('/send-notification', [FirebaseController::class, 'notification'])->name('notification');
 
+
+Route::get('/cache-clear', function () {
+    Artisan::call('cache:clear');
+});
+
 // php artisan queue:retry all
 // php artisan short-schedule:run
 // ./vendor/bin/pint
