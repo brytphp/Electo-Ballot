@@ -3,7 +3,6 @@
         <div class="vld-parent" ref="ballot">
             <loading :active.sync="isLoading" :can-cancel="false" :opacity="0.2" :height="50" :width="50"
                 :is-full-page="fullPage" loader="dots"></loading>
-
             <!-- start page title -->
             <div class="row" v-if="isLoading == false">
                 <div class="col-12">
@@ -31,7 +30,7 @@
                 <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4" v-for="(candidate, index) in ballot.data.candidates"
                     :key="index">
                     <div class="card text-center team-box rounded h100"
-                        @click="toggleCandidate(candidate.id, index + 1)">
+                        @click="toggleCandidate(candidate.id, index + 1, ballot.data.position.unopposed)">
 
                         <div class="card-body ballot" :class="form.candidates.includes(candidate.id) ? 'voted' : ''">
                             <div class="cardheader rounded  border-bottom bg-faded text-dark">
@@ -130,7 +129,12 @@ export default {
 
     methods: {
 
-        toggleCandidate(candidate, index) {
+        toggleCandidate(candidate, index, unopposed) {
+
+            if (unopposed == 1) {
+                return false
+            }
+
             this.form.candidates.includes(candidate) ? this.form.candidates.splice(this.form.candidates.indexOf(
                 candidate), 1) : this.form.candidates.push(candidate)
 
