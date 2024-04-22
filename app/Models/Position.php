@@ -52,7 +52,7 @@ class Position extends Model
 
     public function candidates()
     {
-        return $this->hasMany(Candidate::class)->orderBy('order_of_appearance', 'Asc');
+        return $this->hasMany(Candidate::class)->where('is_active', 1)->orderBy('order_of_appearance', 'Asc');
     }
 
     public function votes()

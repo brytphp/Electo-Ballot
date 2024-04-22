@@ -89,12 +89,12 @@ class Election extends Model implements HasMedia
 
     public function positions()
     {
-        return $this->hasMany(Position::class)->orderBy('order_of_appearance', 'Asc');
+        return $this->hasMany(Position::class)->where('is_active', 1)->orderBy('order_of_appearance', 'Asc');
     }
 
     public function contestants()
     {
-        return $this->hasManyThrough(Candidate::class, Position::class)->orderBy('order_of_appearance', 'Asc');
+        return $this->hasManyThrough(Candidate::class, Position::class)->where('positions.is_active', 1)->where('candidates.is_active', 1)->orderBy('order_of_appearance', 'Asc');
     }
 
     public function register()

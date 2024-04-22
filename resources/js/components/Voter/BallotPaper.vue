@@ -20,8 +20,13 @@
                             </h4>
                         </div>
                     </div>
-                    <!-- <marquee behavior="" direction="">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    </marquee> -->
+                    <marquee v-if="this.ballot.data.position.unopposed == 1" behavior="" direction="">Please click on
+                        <b>{{
+                            this.ballot.data.position.skip }}</b> or <b>{{ this.ballot.data.position.next }}</b> to vote
+                    </marquee>
+                    <marquee v-else behavior="" direction="">Please select up to <b>{{ this.ballot.data.position.chances
+                            }}</b>
+                        candidate(s) of your choice. </marquee>
                 </div>
             </div>
             <!-- end page title -->
@@ -79,18 +84,10 @@
                             BACK
                         </a>
 
-                        <!-- <a v-if="ballot.data.position.can_skip == 1" :href="route('voter.ballot.skip', {
-                            position: route().params.position,
-                            next: ballot.next
-                        })" class="btn btn-danger  waves-effect waves-light">
-                            {{ this.ballot.data.position.skip }}
-                        </a> -->
-
                         <button :disabled="form.busy" @click="save"
                             class="btn btn-success float-right waves-effect waves-light"
                             v-if="form.candidates.length > 0">
                             NEXT
-                            <!-- {{ this.ballot.data.position.next }} -->
                         </button>
                     </div>
                 </div>
@@ -149,6 +146,11 @@ export default {
         },
 
         save() {
+            if (this.form.candidates.length == 0) {
+                this.toast.warning('Please refresh page')
+                return false;
+            }
+
             this.isLoading = true
 
             this.form.post(this.route("api.ballot.data.save.preference", {

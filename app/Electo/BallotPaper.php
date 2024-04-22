@@ -35,8 +35,8 @@ class BallotPaper
             ->get();
 
         if (request()->position != $position->pid) {
-            $position = Position::select($this->fields()['position'])->findOrFail(request()->position);
-            $candidates = Position::findOrFail(request()->position)->candidates()->select($this->fields()['candidate'])->get();
+            $position = Position::select($this->fields()['position'])->where('is_active', 1)->findOrFail(request()->position);
+            $candidates = Position::findOrFail(request()->position)->candidates()->where('is_active', 1)->select($this->fields()['candidate'])->get();
         }
 
         $data = [
