@@ -22,7 +22,7 @@ class OPTController extends Controller
 
     public function index()
     {
-        if (! empty(auth()->user()->voted_at)) {
+        if (!empty(auth()->user()->voted_at)) {
             return redirect()->route('voter.ballot.success');
         }
 
@@ -31,8 +31,8 @@ class OPTController extends Controller
 
     public function resend(OTP $otp)
     {
-        if (now()->isBefore(auth()->user()->otp_expires_at)) {
-            return back()->with('auth_error', 'Please request a new code in '.auth()->user()->otp_expires_at->diff(now())->format('%I:%S').' minutes time');
+        if (now()->isBefore(auth()->user()?->otp_expires_at)) {
+            return back()->with('auth_error', 'Please request a new code in ' . auth()->user()->otp_expires_at->diff(now())->format('%I:%S') . ' minutes time');
         }
 
         $otp = $otp->generate();
