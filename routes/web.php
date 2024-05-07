@@ -6,6 +6,7 @@ use App\Http\Controllers\FirebaseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\VoterUpdateController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +59,7 @@ Route::post('/send-notification', [FirebaseController::class, 'notification'])->
 Route::get('/cache-clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('optimize:clear');
+    Artisan::call('config:cache');
 });
 
 // php artisan queue:retry all
