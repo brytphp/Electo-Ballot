@@ -62,8 +62,6 @@
             <!-- end main content-->
             <v-dialog :width="200" :height="300" :click-to-close="false" :adaptive="true">
             </v-dialog>
-
-            <pusher-notifications electo_channel="{{ config('electo.electo_channel') }}"></pusher-notifications>
         </div>
     </div>
     <!-- END layout-wrapper -->

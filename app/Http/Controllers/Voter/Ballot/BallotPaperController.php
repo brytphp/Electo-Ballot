@@ -18,6 +18,13 @@ class BallotPaperController extends Controller
     {
         $data = $this->ballot->ballotPaper();
 
-        return view('voter.home.home', compact('data'));
+        $unopposed_position = null;
+
+        if (isset($data['data']['position']['unopposed']) && $data['data']['position']['unopposed'] == 1) {
+            $unopposed_position = $data['data']['candidates'][0]['id'];
+        }
+
+
+        return view('voter.home.home', compact('data', 'unopposed_position'));
     }
 }

@@ -146,12 +146,20 @@ export default {
         },
 
         save() {
-            if (this.form.candidates.length == 0) {
-                this.toast.warning('Please refresh page')
-                return false;
+
+            if (window.app.unopposed_position != null) {
+                this.form.candidates = []
+                this.form.candidates.push(window.app.unopposed_position)
+                if (this.form.candidates.length == 0) {
+                    this.toast.warning('Please refresh page')
+                    return false;
+                }
             }
 
             this.isLoading = true
+
+
+
 
             this.form.post(this.route("api.ballot.data.save.preference", {
                 position: this.route().params.position
@@ -196,10 +204,12 @@ export default {
                 .catch(error => {
 
                 });
+
         },
     },
     async created() {
         this.getCandidates()
+
     }
 };
 
