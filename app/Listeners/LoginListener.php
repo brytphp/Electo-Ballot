@@ -32,11 +32,11 @@ class LoginListener
             if ($event->user->voted_at == null && $event->user->election->is_active == 1) {
                 $otp_code = $this->otp->generate();
 
-                $sms = 'Keep your account safe. Do not share your one time password with anyone. Your password is '.$otp_code;
+                $sms = 'Keep your account safe. Do not share your one time password with anyone. Your password is ' . $otp_code;
 
                 send_sms(auth()->user()->phone, $sms);
 
-                if (! empty(auth()->user()->email)) {
+                if (!empty(auth()->user()->email)) {
                     if (filter_var(auth()->user()->email, FILTER_VALIDATE_EMAIL)) {
                         try {
                             auth()->user()->notify(new OTPNotification($otp_code));

@@ -54,10 +54,6 @@ class TestElecto extends Command
     public function handle()
     {
 
-
-
-
-
         $tokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
 
         $message = CloudMessage::fromArray([

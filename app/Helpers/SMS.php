@@ -16,29 +16,33 @@ function send_sms($to = '233248130682', $message = 'Hello World')
         exit();
     }
 
-    try {
-        $host = 'https://api.wittyflow.com/v1/messages/send';
+    if (strlen($to) == 10) {
+        $formattedTo = str_starts_with($to, '233') ? $to : '233' . ltrim($to, '0');
 
-        $body = [
-            'from' => 'ICAG',
-            'to' => substr($to, 0, 1) == '+' ? substr($to, 1) : $to,
-            'type' => 1,
-            'message' => $message,
-            'app_id' => config('witty.app_id'),
-            'app_secret' => config('witty.secret'),
-            'callback_url' => 'http://mrtimzke7p.sharedwithexpose.com/sms-callback', //route('sms-callback'),
-        ];
+        try {
+            $host = 'https://api.wittyflow.com/v1/messages/send';
 
-        $response = Http::post($host, $body);
-        $jsonData = $response->json();
+            $body = [
+                'from' => 'ICAG',
+                'to' => substr($to, 0, 1) == '+' ? substr($to, 1) : $to,
+                'type' => 1,
+                'message' => $message,
+                'app_id' => config('witty.app_id'),
+                'app_secret' => config('witty.secret'),
+                'callback_url' => 'http://mrtimzke7p.sharedwithexpose.com/sms-callback', //route('sms-callback'),
+            ];
 
-        // Log::channel('sms')->info('sms', [
-        //     'response' => $jsonData,
-        // ]);
+            $response = Http::post($host, $body);
+            $jsonData = $response->json();
 
-        return $jsonData;
-    } catch (exception $e) {
-        //code to handle the exception
+            // Log::channel('sms')->info('sms', [
+            //     'response' => $jsonData,
+            // ]);
+
+            return $jsonData;
+        } catch (exception $e) {
+            //code to handle the exception
+        }
     }
 }
 
@@ -76,7 +80,7 @@ function local_phone_number($number)
     }
 
     if (strlen($number) == 9) {
-        (string) '0'.$number;
+        (string) '0' . $number;
     }
 
     return $number;
@@ -124,7 +128,7 @@ function format_phone_number($number)
     }
 
     if (strlen($number) == 9) {
-        (string) '0'.$number;
+        (string) '0' . $number;
     }
 
     return $number;
@@ -180,7 +184,7 @@ function wigal_sms($to = 'brytphp@gmail.com', $message = 'Hello World')
     curl_close($curl);
 
     $response = json_decode($response);
-    if (! $err || $err == '') {
+    if (!$err || $err == '') {
         if ($response->status == 'ACCEPTED') {
             echo 'message accepted for sending';
         } else {
@@ -264,19 +268,19 @@ function telco($phone)
 
     $codes = [
         '023' => '',
-        '024' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
-        '025' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
-        '053' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
-        '054' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
-        '055' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
-        '059' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
-        '027' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
-        '057' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
-        '026' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
-        '056' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
+        '024' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
+        '025' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
+        '053' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
+        '054' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
+        '055' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
+        '059' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
+        '027' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
+        '057' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
+        '026' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
+        '056' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
         '028' => '',
-        '020' => '<img src="'.asset('img/telcos/vodafone.png').'" style="width:25px;">',
-        '050' => '<img src="'.asset('img/telcos/vodafone.png').'" style="width:25px;">',
+        '020' => '<img src="' . asset('img/telcos/vodafone.png') . '" style="width:25px;">',
+        '050' => '<img src="' . asset('img/telcos/vodafone.png') . '" style="width:25px;">',
     ];
 
     return $codes[substr($phone, 0, 3)] ?? null;
