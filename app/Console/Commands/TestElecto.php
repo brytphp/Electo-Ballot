@@ -53,6 +53,10 @@ class TestElecto extends Command
      */
     public function handle()
     {
+        $to = '0248130682';
+        send_sms($to, 'test');
+
+        die('sent');
 
         $tokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
 

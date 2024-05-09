@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Propaganistas\LaravelPhone\PhoneNumber;
 
-function send_sms($to = '233248130682', $message = 'Hello World')
+function send_sms($to = '0248130682', $message = 'Hello World')
 {
     if (config('app.env') == 'local') {
         Log::channel('sms')->info('sms', [
@@ -17,14 +17,14 @@ function send_sms($to = '233248130682', $message = 'Hello World')
     }
 
     if (strlen($to) == 10) {
-        $formattedTo = str_starts_with($to, '233') ? $to : '233' . ltrim($to, '0');
+        $to = str_starts_with($to, '233') ? $to : '233' . ltrim($to, '0');
 
         try {
             $host = 'https://api.wittyflow.com/v1/messages/send';
 
             $body = [
                 'from' => 'ICAG',
-                'to' => substr($to, 0, 1) == '+' ? substr($to, 1) : $to,
+                'to' =>  $to,
                 'type' => 1,
                 'message' => $message,
                 'app_id' => config('witty.app_id'),
@@ -44,6 +44,8 @@ function send_sms($to = '233248130682', $message = 'Hello World')
             //code to handle the exception
         }
     }
+
+    return 'lol';
 }
 
 function sent_messages()
