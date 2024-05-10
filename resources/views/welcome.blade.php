@@ -42,8 +42,8 @@
     <nav class="navbar navbar-expand-lg navigation fixed-top sticky">
         <div class="container">
             <a class="navbar-logo" href="/">
-                <img src="theme/images/logo-dark.png" alt="" height="19" class="logo logo-dark">
-                <img src="theme/images/logo-light.png" alt="" height="19" class="logo logo-light">
+                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-dark">
+                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-light">
             </a>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
@@ -253,15 +253,15 @@
                                 <div>
                                     <div class="event-date">
                                         <div class="text-primary mb-1">Step 1</div>
-                                        <h5 class="mb-4">Member Verification</h5>
+                                        <h5 class="mb-4">Authentication</h5>
                                     </div>
                                     <div class="event-down-icon">
                                         <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
                                     </div>
 
                                     <div class="mt-3 px-3">
-                                        <p class="text-muted">This stage ensures a member quallifies to vote for his or
-                                            her prefered candidate</p>
+                                        <p class="text-muted">On the login page {{ $election->voters_name }} are
+                                            required to provide their login credentials</p>
                                     </div>
                                 </div>
                             </div>
@@ -270,15 +270,16 @@
                                 <div>
                                     <div class="event-date">
                                         <div class="text-primary mb-1">Step 2</div>
-                                        <h5 class="mb-4">Voting</h5>
+                                        <h5 class="mb-4">{{ str()->singular($election->voters_name) }} Verification
+                                        </h5>
                                     </div>
                                     <div class="event-down-icon">
                                         <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
                                     </div>
 
                                     <div class="mt-3 px-3">
-                                        <p class="text-muted">Verified members are presented with e-ballots to vote for
-                                            their prefered candidates </p>
+                                        <p class="text-muted">Provide the OTP (One Time Password) sent to your mail or
+                                            phone number used to login in the previous step</p>
                                     </div>
                                 </div>
                             </div>
@@ -287,16 +288,15 @@
                                 <div>
                                     <div class="event-date">
                                         <div class="text-primary mb-1">Step 3</div>
-                                        <h5 class="mb-4">Casting Vote</h5>
+                                        <h5 class="mb-4">Balloting</h5>
                                     </div>
                                     <div class="event-down-icon">
                                         <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
                                     </div>
 
                                     <div class="mt-3 px-3">
-                                        <p class="text-muted">Members have the chance to revisit their choices in step
-                                            2
-                                            before finally casting their votes. </p>
+                                        <p class="text-muted">Select any candidate(s) of your choice for each position
+                                            as presented on the e-ballot </p>
                                     </div>
                                 </div>
                             </div>
@@ -305,15 +305,14 @@
                                 <div>
                                     <div class="event-date">
                                         <div class="text-primary mb-1">Step 4</div>
-                                        <h5 class="mb-4">Results</h5>
+                                        <h5 class="mb-4">Cast Vote</h5>
                                     </div>
                                     <div class="event-down-icon">
                                         <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
                                     </div>
 
                                     <div class="mt-3 px-3">
-                                        <p class="text-muted">Whilst election results are declared at the end of the
-                                            election, votes are counted in realtime. </p>
+                                        <p class="text-muted">Confirm the selected candidates and cast your vote</p>
                                     </div>
                                 </div>
                             </div>

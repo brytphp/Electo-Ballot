@@ -30,8 +30,8 @@
     <nav class="navbar navbar-expand-lg navigation fixed-top sticky">
         <div class="container">
             <a class="navbar-logo" href="/">
-                <img src="theme/images/logo-dark.png" alt="" height="19" class="logo logo-dark">
-                <img src="theme/images/logo-light.png" alt="" height="19" class="logo logo-light">
+                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-dark">
+                <img src="{{ asset('img/icag.png') }}" alt="" height="50" class="logo logo-light">
             </a>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
