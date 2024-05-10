@@ -269,7 +269,7 @@ function telco($phone)
 {
 
     $codes = [
-        '023' => '',
+        '024' => '<img src="' . asset('img/telcos/glo.png') . '" style="width:20px;">',
         '024' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
         '025' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
         '053' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
@@ -286,4 +286,14 @@ function telco($phone)
     ];
 
     return $codes[substr($phone, 0, 3)] ?? null;
+}
+
+
+function clean_country($country)
+{
+    if (isset($country) && ctype_alpha($country) && strlen($country) == 2) {
+        return $country;
+    }
+
+    return 'GH';
 }
