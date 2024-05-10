@@ -66,7 +66,7 @@ export default {
     },
     data() {
         return {
-            source: '/brochure.pdf',
+            source: '/2024-Election-Brochure.pdf',
             page: 1,
             pageCount: 1,
             showAllPages: false,
