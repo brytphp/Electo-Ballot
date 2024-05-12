@@ -60,7 +60,7 @@
                 @include('voter.layouts.footer')
             </div>
             <!-- end main content-->
-            <v-dialog :width="200" :height="300" :click-to-close="false" :adaptive="true">
+            <v-dialog :width="240" :height="300" :click-to-close="false" :adaptive="true">
             </v-dialog>
         </div>
     </div>

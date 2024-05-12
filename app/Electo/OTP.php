@@ -19,6 +19,7 @@ class OTP
         auth()->user()->update([
             'otp' => $code,
             'otp_expires_at' => Carbon::now()->addMinutes(10),
+            'otp_attempts' => auth()->user()->otp_attempts + 1
         ]);
     }
 

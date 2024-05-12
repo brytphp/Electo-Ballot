@@ -146,6 +146,7 @@
             </div>
             <div class="foot text-center" style="font-size: 11px; text-transform: uppercase;">
                 {{ $user->election->ref }}
+                {{ $user->receipt_id }}
             </div>
         </div>
     </div>

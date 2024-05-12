@@ -17,14 +17,14 @@ function send_sms($to = '0248130682', $message = 'Hello World')
     }
 
     if (strlen($to) == 10) {
-        $to = str_starts_with($to, '233') ? $to : '233' . ltrim($to, '0');
+        $to = str_starts_with($to, '233') ? $to : '233'.ltrim($to, '0');
 
         try {
             $host = 'https://api.wittyflow.com/v1/messages/send';
 
             $body = [
                 'from' => 'ICAG',
-                'to' =>  $to,
+                'to' => $to,
                 'type' => 1,
                 'message' => $message,
                 'app_id' => config('witty.app_id'),
@@ -82,7 +82,7 @@ function local_phone_number($number)
     }
 
     if (strlen($number) == 9) {
-        (string) '0' . $number;
+        (string) '0'.$number;
     }
 
     return $number;
@@ -130,7 +130,7 @@ function format_phone_number($number)
     }
 
     if (strlen($number) == 9) {
-        (string) '0' . $number;
+        (string) '0'.$number;
     }
 
     return $number;
@@ -186,7 +186,7 @@ function wigal_sms($to = 'brytphp@gmail.com', $message = 'Hello World')
     curl_close($curl);
 
     $response = json_decode($response);
-    if (!$err || $err == '') {
+    if (! $err || $err == '') {
         if ($response->status == 'ACCEPTED') {
             echo 'message accepted for sending';
         } else {
@@ -269,25 +269,24 @@ function telco($phone)
 {
 
     $codes = [
-        '023' => '<img src="' . asset('img/telcos/glo.png') . '" style="width:20px;">',
-        '024' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
-        '025' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
-        '053' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
-        '054' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
-        '055' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
-        '059' => '<img src="' . asset('img/telcos/mtn2.png') . '" style="width:20px;">',
-        '027' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
-        '057' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
-        '026' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
-        '056' => '<img src="' . asset('img/telcos/airteltigo.png') . '" style="width:25px;">',
+        '023' => '<img src="'.asset('img/telcos/glo.png').'" style="width:20px;">',
+        '024' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
+        '025' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
+        '053' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
+        '054' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
+        '055' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
+        '059' => '<img src="'.asset('img/telcos/mtn2.png').'" style="width:20px;">',
+        '027' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
+        '057' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
+        '026' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
+        '056' => '<img src="'.asset('img/telcos/airteltigo.png').'" style="width:25px;">',
         '028' => '',
-        '020' => '<img src="' . asset('img/telcos/vodafone.png') . '" style="width:25px;">',
-        '050' => '<img src="' . asset('img/telcos/vodafone.png') . '" style="width:25px;">',
+        '020' => '<img src="'.asset('img/telcos/vodafone.png').'" style="width:25px;">',
+        '050' => '<img src="'.asset('img/telcos/vodafone.png').'" style="width:25px;">',
     ];
 
     return $codes[substr($phone, 0, 3)] ?? null;
 }
-
 
 function clean_country($country)
 {

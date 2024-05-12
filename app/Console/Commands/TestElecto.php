@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Events\TotalVotesCast;
 use App\Models\Election;
 use App\Models\User;
 use Illuminate\Console\Command;
@@ -56,7 +55,7 @@ class TestElecto extends Command
         $to = '0248130682';
         send_sms($to, 'test');
 
-        die('sent');
+        exit('sent');
 
         $tokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
 

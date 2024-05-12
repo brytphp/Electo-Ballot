@@ -30,7 +30,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'first_name', 'other_names', 'email', 'voter_id', 'election_id', 'session_id', 'phone', 'verified_at', 'voted_at', 'attempted_at', 'access_role', 'password', 'id',  'email_checked_at', 'phone_checked_at', 'country_code', 'international_phone', 'otp', 'otp_expires_at', 'voting_attempts', 'system_checked_phone_at', 'fcm_token',
+        'first_name', 'other_names', 'email', 'voter_id', 'election_id', 'session_id', 'phone', 'verified_at', 'voted_at', 'attempted_at', 'access_role', 'password', 'id',  'email_checked_at', 'phone_checked_at', 'country_code', 'international_phone', 'otp', 'otp_expires_at', 'otp_attempts', 'system_checked_phone_at', 'fcm_token', 'receipt_id',
     ];
 
     /**

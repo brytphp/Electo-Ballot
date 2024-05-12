@@ -14,7 +14,6 @@ function goto_page($candidate)
         '5a89f26b-cff7-4aa4-ae78-e6139a637102' => 22,
         '4ca0371f-f031-4313-a375-b7ef3da97d82' => 24,
 
-
         'dfeb1608-bfce-47b6-b1ee-42584ff47dde' => 27,
         '3cff6c88-7cdc-49a0-a886-1804984197f4' => 30,
     ];

@@ -24,7 +24,6 @@ class BallotPaperController extends Controller
             $unopposed_position = $data['data']['candidates'][0]['id'];
         }
 
-
         return view('voter.home.home', compact('data', 'unopposed_position'));
     }
 }

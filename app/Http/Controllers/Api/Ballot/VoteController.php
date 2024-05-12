@@ -7,6 +7,7 @@ use App\Events\TotalVotesCast;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use Str;
 
 class VoteController extends Controller
 {
@@ -35,6 +36,7 @@ class VoteController extends Controller
 
         auth()->user()->update([
             'voted_at' => $voted_at,
+            'receipt_id' => Str::ulid(),
         ]);
 
         $election = auth()->user()->election;

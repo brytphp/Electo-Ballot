@@ -455,7 +455,7 @@ namespace App\Models{
  * @property string|null $two_factor_recovery_codes
  * @property string|null $session_id
  * @property int|null $otp
- * @property int|null $voting_attempts
+ * @property int|null $otp_attempts
  * @property string|null $email_checked_at
  * @property string|null $phone_checked_at
  * @property string|null $system_checked_phone_at
@@ -464,6 +464,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $attempted_at
  * @property \Illuminate\Support\Carbon|null $otp_expires_at
  * @property string|null $remember_token
+ * @property string|null $receipt_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Election|null $election
@@ -503,10 +504,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereInternationalPhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereOtherNames($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereOtp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereOtpAttempts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereOtpExpiresAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhoneCheckedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereReceiptId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSessionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSystemCheckedPhoneAt($value)
@@ -517,7 +520,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereVotedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereVoterId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereVotesPerVoter($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereVotingAttempts($value)
  */
 	class User extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
 }

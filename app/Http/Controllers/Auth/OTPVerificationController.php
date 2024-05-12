@@ -20,7 +20,6 @@ class OTPVerificationController extends Controller
             'otp' => null,
             'otp_expires_at' => null,
             'attempted_at' => now(),
-            // 'voting_attempts' => auth()->user()->voting_attempts++
         ]);
 
         // try {
