@@ -20,11 +20,13 @@
                             </h4>
                         </div>
                     </div>
-                    <marquee v-if="this.ballot.data.position.unopposed == 1" behavior="" direction="">Please click on
+                    <marquee class="text-danger" v-if="this.ballot.data.position.unopposed == 1" behavior=""
+                        direction="">Please click on
                         <b>{{
                             this.ballot.data.position.skip }}</b> or <b>{{ this.ballot.data.position.next }}</b> to vote
                     </marquee>
-                    <marquee v-else behavior="" direction="">Please select up to <b>{{ this.ballot.data.position.chances
+                    <marquee class="text-danger" v-else behavior="" direction="">Please select up to <b>{{
+                        this.ballot.data.position.chances
                             }}</b>
                         candidate(s) of your choice. </marquee>
                 </div>

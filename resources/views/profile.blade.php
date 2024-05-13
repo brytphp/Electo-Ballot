@@ -82,9 +82,8 @@
     </nav>
 
     <!-- hero section start -->
-    <section class="section herosection bg-ico-hero"
-        style="background-image: url('{{ $election->getFirstMediaUrl('banner') }}'); background-attachment: fixed;"
-        id="home">
+    <section class="section hero-section bg-ico-hero"
+        style="background-image: url('{{ $election->banner }}'); background-attachment: fixed;" id="home">
         <div class="bg-overlay bgdark"></div>
 
         <div class="container" id="app">

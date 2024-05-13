@@ -328,7 +328,7 @@
     <!-- Roadmap end -->
 
     <!-- Footer start -->
-    <footer class="landing-footer">
+    {{-- <footer class="landing-footer">
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-12">
@@ -341,7 +341,7 @@
             </div>
         </div>
         <!-- end container -->
-    </footer>
+    </footer> --}}
     <!-- Footer end -->
 
     <!-- JAVASCRIPT -->
