@@ -106,7 +106,7 @@
                     {{-- <div class="mb-1">
                         <img src="{{ asset('theme/images/logo-light.png') }}" alt="" height="20">
                     </div> --}}
-                    <p class="mb-2">{{ date('Y') }} © Electo.</p>
+                    <p class="mb-2">{{ date('Y') }} © {{ config('app.name') }}</p>
                 </div>
 
             </div>
