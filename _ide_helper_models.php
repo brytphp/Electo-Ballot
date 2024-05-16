@@ -347,6 +347,29 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\OtpHistory
+ *
+ * @property string $id
+ * @property string|null $user_id
+ * @property int|null $otp
+ * @property \Illuminate\Support\Carbon|null $otp_expires_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory whereOtp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory whereOtpExpiresAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OtpHistory whereUserId($value)
+ */
+	class OtpHistory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Position
  *
  * @property string $id
@@ -477,6 +500,8 @@ namespace App\Models{
  * @property-read int|null $media_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OtpHistory> $otps
+ * @property-read int|null $otps_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles

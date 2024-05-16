@@ -105,4 +105,9 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Vote::class)->orderBy('created_at');
     }
+
+    public function otps()
+    {
+        return $this->hasMany(OtpHistory::class)->latest();
+    }
 }

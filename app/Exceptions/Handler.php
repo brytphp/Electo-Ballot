@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Sentry\Laravel\Integration;
 
 class Handler extends ExceptionHandler
 {
@@ -35,11 +36,7 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            if ($this->shouldReport($e) && app()->bound('sentry')) {
-                if (setting()->get('enable_slack_notifications')) {
-                    app('sentry')->captureException($e);
-                }
-            }
+            Integration::captureUnhandledException($e);
         });
 
         // $this->reportable(function (Throwable $e) {
