@@ -2,6 +2,7 @@
 
 function goto_page($candidate)
 {
+    return 1;
     $pages = [
         '0907602a-43ee-4490-8351-b6caa2a57be8' => 8,
 

@@ -20,12 +20,12 @@ class OTP
         auth()->user()->update([
             'otp' => $code,
             'otp_expires_at' => $otp_expires_at,
-            'otp_attempts' => auth()->user()->otp_attempts + 1
+            'otp_attempts' => auth()->user()->otp_attempts + 1,
         ]);
 
         auth()->user()->otps()->create([
             'otp' => $code,
-            'otp_expires_at' => $otp_expires_at
+            'otp_expires_at' => $otp_expires_at,
         ]);
     }
 

@@ -16,7 +16,7 @@ class OtpHistory extends Model
     protected $fillable = [
         'user_id',
         'otp',
-        'otp_expires_at'
+        'otp_expires_at',
     ];
 
     protected $casts = [

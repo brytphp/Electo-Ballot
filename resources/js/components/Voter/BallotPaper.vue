@@ -160,9 +160,6 @@ export default {
 
             this.isLoading = true
 
-
-
-
             this.form.post(this.route("api.ballot.data.save.preference", {
                 position: this.route().params.position
             })).then(({
