@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class HasVoted
             return $next($request);
         }
 
-        if (auth()->user()->election->authentication == 'USERNAME_PASSWORD_OTP' && ! empty(auth()->user()->otp) && auth()->user()->voted_at == null) {
+        if (auth()->user()->election->authentication == 'USERNAME_PASSWORD_OTP' && !empty(auth()->user()->otp) && auth()->user()->voted_at == null) {
             return redirect()->route('voter.verification.form')->with('auth_success', 'Verification code sent.');
         }
 

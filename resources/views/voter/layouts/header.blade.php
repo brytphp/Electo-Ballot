@@ -43,8 +43,9 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="javascript:void(0)"><i
-                            class="bx bx-user font-size-16 align-middle mr-1"></i> Logged In As
-                        {{ auth()->user()->first_name }}</a>
+                            class="bx bx-user font-size-16 align-middle mr-1"></i>
+                        {{ str()->singular($election->voters_name) }} ID
+                        {{ auth()->user()->voter_id }}</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
