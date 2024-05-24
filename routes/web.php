@@ -60,6 +60,11 @@ Route::get('/cache-clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('optimize:clear');
     Artisan::call('config:cache');
+    $sessions = glob(storage_path("framework/sessions/*"));
+    foreach ($sessions as $file) {
+        if (is_file($file))
+            unlink($file);
+    }
 });
 
 // php artisan queue:retry all

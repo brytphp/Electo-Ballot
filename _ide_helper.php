@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.48.10.
+ * Generated for Laravel 10.48.11.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -20300,51 +20300,6 @@ namespace Barryvdh\Debugbar\Facades {
             }
     }
 
-namespace Kreait\Laravel\Firebase\Facades {
-            /**
-     * 
-     *
-     * @method static \Kreait\Firebase\Contract\AppCheck appCheck()
-     * @method static \Kreait\Firebase\Contract\Auth auth()
-     * @method static \Kreait\Firebase\Contract\Database database()
-     * @method static \Kreait\Firebase\Contract\DynamicLinks dynamicLinks()
-     * @method static \Kreait\Firebase\Contract\Firestore firestore()
-     * @method static \Kreait\Firebase\Contract\Messaging messaging()
-     * @method static \Kreait\Firebase\Contract\RemoteConfig remoteConfig()
-     * @method static \Kreait\Firebase\Contract\Storage storage()
-     * @see \Kreait\Laravel\Firebase\FirebaseProjectManager
-     * @see \Kreait\Laravel\Firebase\FirebaseProject
-     */        class Firebase {
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function project($name = null)
-        {
-                        /** @var \Kreait\Laravel\Firebase\FirebaseProjectManager $instance */
-                        return $instance->project($name);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function getDefaultProject()
-        {
-                        /** @var \Kreait\Laravel\Firebase\FirebaseProjectManager $instance */
-                        return $instance->getDefaultProject();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function setDefaultProject($name)
-        {
-                        /** @var \Kreait\Laravel\Firebase\FirebaseProjectManager $instance */
-                        return $instance->setDefaultProject($name);
-        }
-            }
-    }
-
 namespace PragmaRX\CountriesLaravel\Package {
             /**
      * 
@@ -24903,7 +24858,6 @@ namespace  {
             class ShortURL extends \AshAllenDesign\ShortURL\Facades\ShortURL {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}
-            class Firebase extends \Kreait\Laravel\Firebase\Facades\Firebase {}
             class Horizon extends \Laravel\Horizon\Horizon {}
             class Countries extends \PragmaRX\CountriesLaravel\Package\Facade {}
             class Sentry extends \Sentry\Laravel\Facade {}

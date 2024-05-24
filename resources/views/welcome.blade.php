@@ -131,13 +131,27 @@
                             <div class="card-body">
                                 <div class="text-center">
                                     <div class="mt-4">
-                                        <div data-countdown="{{ $election->is_active == 0 ? $election->start_date : $election->end_date }}"
-                                            class="counter-number ico-countdown"></div>
+                                        @if (
+                                            $election->is_active == 1 &&
+                                                $election->is_sealed == 1 &&
+                                                \Carbon\Carbon::now()->between($election->start_date, $election->end_date))
+                                            <div data-countdown="{{ $election->end_date }}"
+                                                class="counter-number ico-countdown"></div>
+                                        @elseif ($election->is_sealed == 1 && \Carbon\Carbon::now()->isBefore($election->start_date))
+                                            <div data-countdown="{{ $election->start_date }}"
+                                                class="counter-number ico-countdown"></div>
+                                        @else
+                                            <div data-countdown="0" class="counter-number ico-countdown"></div>
+                                        @endif
                                     </div>
 
-                                    @if ($election->is_active && $election->is_sealed)
+                                    @if (
+                                        $election->is_active == 1 &&
+                                            $election->is_sealed == 1 &&
+                                            \Carbon\Carbon::now()->between($election->start_date, $election->end_date))
                                         <div class="mt-4">
-                                            <a href="{{ route('login') }}" class="btn btn-success w-md btn-block">Vote
+                                            <a href="{{ route('login') }}"
+                                                class="btn btn-success w-md btn-block">Vote
                                                 Now</a>
                                         </div>
                                     @endif
@@ -161,8 +175,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center mb-5 ">
-                            <div class="small-title  text-white">Candidates</div>
-                            <h4 class="text-uppercase text-white">Meet our Candidates</h4>
+                            {{-- <div class="small-title  text-white">Candidates</div> --}}
+                            <h4 class="text-uppercase text-white">Meet The Candidates</h4>
                         </div>
                     </div>
                 </div>
@@ -189,31 +203,64 @@
                                     <div class="card-body">
                                         <div class="row nogutters">
                                             @foreach ($position->candidates as $key => $candidate)
-                                                <div class="col-md-3">
-                                                    <a href="{{ route('profile', $candidate->id) }}">
-                                                        <div class="card text-center team-box">
-                                                            @if ($position->position != 'President')
-                                                                <div class="card-header rounded">
-                                                                    <b>{{ 'Candidate No. ' . $key + 1 }}</b>
-                                                                </div>
-                                                            @endif
+                                                @if ($position->position == 'COUNCIL MEMBERS')
+                                                    <div class="col">
+                                                        <a href="{{ route('profile', $candidate->id) }}">
+                                                            <div class="card text-center team-box">
+                                                                @if ($position->position != 'President')
+                                                                    <div class="card-header rounded">
+                                                                        <b>{{ 'Candidate No. ' . $key + 1 }}</b>
+                                                                    </div>
+                                                                @endif
 
-                                                            <div class="card-body">
-                                                                <div>
-                                                                    <img src="{{ $candidate->avatar }}"
-                                                                        alt="" class="rounded img-fluid">
+                                                                <div class="card-body">
+                                                                    <div>
+                                                                        <img src="{{ $candidate->avatar }}"
+                                                                            style="height:150px; width:400px"
+                                                                            alt="" class="rounded img-fluid">
+                                                                    </div>
+
+                                                                    <div class="mt-1 border-top">
+                                                                        <h6 class="">
+                                                                            {{ $candidate->first_name }}
+                                                                            {{ $candidate->other_names }}
+                                                                        </h6>
+                                                                    </div>
                                                                 </div>
 
-                                                                <div class="mt-1 border-top">
-                                                                    <h6 class="">{{ $candidate->first_name }}
-                                                                        {{ $candidate->other_names }}
-                                                                    </h6>
-                                                                </div>
                                                             </div>
+                                                        </a>
+                                                    </div>
+                                                @else
+                                                    <div class="col-md-3">
+                                                        <a href="{{ route('profile', $candidate->id) }}">
+                                                            <div class="card text-center team-box"
+                                                                style="width:200px">
+                                                                @if ($position->position != 'President')
+                                                                    <div class="card-header rounded">
+                                                                        <b>{{ 'Candidate No. ' . $key + 1 }}</b>
+                                                                    </div>
+                                                                @endif
 
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                                                <div class="card-body">
+                                                                    <div>
+                                                                        <img src="{{ $candidate->avatar }}"
+                                                                            style="height:180px; " alt=""
+                                                                            class="rounded img-fluid">
+                                                                    </div>
+
+                                                                    <div class="mt-1 border-top">
+                                                                        <h6 class="">
+                                                                            {{ $candidate->first_name }}
+                                                                            {{ $candidate->other_names }}
+                                                                        </h6>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>
@@ -312,7 +359,8 @@
                                     </div>
 
                                     <div class="mt-3 px-3">
-                                        <p class="text-muted">Confirm the selected candidates and cast your vote</p>
+                                        <p class="text-muted">Confirm your selected candidates, cast your vote and
+                                            download receipt.</p>
                                     </div>
                                 </div>
                             </div>

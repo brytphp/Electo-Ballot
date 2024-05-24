@@ -3,8 +3,8 @@
 
 <head>
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8" />
     <title>@yield('title') | {{ config('app.name', 'Laravel') }} - {{ config('app.description', 'Best Dashboard') }}
     </title>
@@ -57,8 +57,6 @@
     <script src="{{ asset('theme/libs/owl.carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('theme/libs/jquery-countdown/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('theme/js/pages/ico-landing.init.js') }}"></script>
-
-    <script src="{{ mix('js/app.js') }}" ></script>
 
     @yield('js')
 

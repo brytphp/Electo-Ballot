@@ -51,7 +51,7 @@ class VoteController extends Controller
             }
 
             try {
-                $msg = 'Congrats! Voting successful. Please stay tuned for further updates. Thank you.';
+                $msg = 'Voting successful. Thank you.';
 
                 if (strlen(auth()->user()->phone) == 10) {
                     send_sms(auth()->user()->phone, $msg);

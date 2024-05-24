@@ -6,9 +6,6 @@ use App\Models\Election;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
-use Kreait\Firebase\Messaging\CloudMessage;
-use Kreait\Laravel\Firebase\Facades\Firebase;
-use Kutia\Larafirebase\Facades\Larafirebase;
 
 class TestElecto extends Command
 {
@@ -39,9 +36,6 @@ class TestElecto extends Command
      */
     public function __construct()
     {
-        // $this->settings = $settings;
-        // $this->election = Election::first();
-        $this->notification = Firebase::messaging();
         parent::__construct();
     }
 
@@ -59,23 +53,6 @@ class TestElecto extends Command
 
         $tokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
 
-        $message = CloudMessage::fromArray([
-            'token' => $tokens[0],
-            'notification' => [
-                'title' => 'Electo',
-                'body' => 'Hello World',
-            ],
-        ]);
-
-        $this->notification->send($message);
-
-        // Larafirebase::withTitle('Test')
-        //     ->withBody('Test body')
-        //     ->sendMessage($tokens);
-
-        // Larafirebase::withTitle('Test Title')
-        //     ->withBody('Test body')
-        //     ->sendNotification($tokens);
 
         Mail::raw('Hello Electo!', function ($msg) {
             $msg->to('brytphp@gmail.com')->subject('Test Electo Email');

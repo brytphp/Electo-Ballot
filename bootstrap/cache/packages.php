@@ -106,24 +106,6 @@
       'Agent' => 'Jenssegers\\Agent\\Facades\\Agent',
     ),
   ),
-  'kreait/laravel-firebase' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Kreait\\Laravel\\Firebase\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Firebase' => 'Kreait\\Laravel\\Firebase\\Facades\\Firebase',
-    ),
-  ),
-  'kutia-software-company/larafirebase' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Kutia\\Larafirebase\\Providers\\LarafirebaseServiceProvider',
-    ),
-  ),
   'laravel/fortify' => 
   array (
     'providers' => 

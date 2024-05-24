@@ -69,3 +69,7 @@
         <v-dialog :width="200" :height="300" :click-to-close="false" :adaptive="true"></v-dialog>
     </div>
 @endsection
+
+@section('js')
+    <script src="{{ mix('js/app.js') }}"></script>
+@endsection

@@ -24,10 +24,9 @@
 
                 <div class="alert alert-warning fade show" role="alert">
                     <i class="mdi mdi-alert-outline mr-2"></i>
-                    You may go back to review your selections or click <b class="textsuccess">CAST
+                    You may go <b>BACK</b> to reselect candidate(s) or scroll down and click on <b class="textsuccess">CAST
                         VOTE</b> to
-                    finally cast
-                    your vote.
+                    finally submit your vote.
                 </div>
 
             </div>

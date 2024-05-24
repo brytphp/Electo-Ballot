@@ -23,7 +23,7 @@
                                         <p class="font-weight-semibold text-success">Thank you for voting in this election
                                         </p>
                                         <a href="{{ route('voter.receipt.download') }}"
-                                            class="btn btn-outline-success waves-effect waves-light">
+                                            class="btn btn-success waves-effect waves-light">
                                             Download Receipt
                                         </a>
                                     </div>
@@ -41,7 +41,7 @@
                                         {{ auth()->user()->election->voted->count() }}/{{ auth()->user()->election->register->count() }}
                                     </h2>
 
-                                    <a href="javascript:void(0)" class="btn btn-outline-dark waves-effect waves-light"
+                                    <a href="javascript:void(0)" class="btn btn-dark waves-effect waves-light"
                                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         Close Window
                                     </a>

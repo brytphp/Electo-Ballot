@@ -23,7 +23,7 @@
                     <marquee class="text-danger" v-if="this.ballot.data.position.unopposed == 1" behavior=""
                         direction="">Please click on
                         <b>{{
-                            this.ballot.data.position.skip }}</b> or <b>{{ this.ballot.data.position.next }}</b> to vote
+                            this.ballot.data.position.next }}</b> or <b>{{ this.ballot.data.position.skip }}</b> to vote
                     </marquee>
                     <marquee class="text-danger" v-else behavior="" direction="">Please select up to <b>{{
                         this.ballot.data.position.chances
@@ -62,20 +62,22 @@
                         <a :disabled="form.busy" :href="route('voter.ballot.paper', {
                             position: ballot.back
                         })" v-if="route().params.position != ballot.data.first.pid"
-                            class="btn btn-dark  waves-effect waves-light mr-2">
+                            class="btn btn-dark  waves-effect waves-light mr-4">
                             BACK
                         </a>
+
+                        <button @click="save" :disabled="form.busy" class="btn btn-success  waves-effect waves-light">
+                            {{
+                                this.ballot.data.position.next }}</button>
 
                         <a :disabled="form.busy" :href="route('voter.ballot.skip', {
                             position: route().params.position,
                             next: ballot.next
-                        })" class="btn btn-danger  waves-effect waves-light">
+                        })" class="btn btn-danger float-right waves-effect waves-light">
                             {{ this.ballot.data.position.skip }}
                         </a>
 
-                        <button @click="save" :disabled="form.busy"
-                            class="btn btn-success float-right waves-effect waves-light"> {{
-                                this.ballot.data.position.next }}</button>
+
                     </div>
                     <div v-else>
 
@@ -142,7 +144,7 @@ export default {
                     candidate), 1)
 
                 var msg = this.ballot.data.position.chances > 1 ? ' candidates' : ' candidate';
-                this.toast.warning('You can only elect ' + this.ballot.data.position.chances + msg)
+                this.toast.warning('You can only select ' + this.ballot.data.position.chances + msg)
                 return false;
             }
         },
