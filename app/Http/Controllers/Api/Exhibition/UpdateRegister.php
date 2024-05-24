@@ -34,18 +34,19 @@ class UpdateRegister extends Controller
         ]);
 
 
-        try {
-            $response = Http::withToken('TOcEmqFotM2U6O1NI5rEVmep7T2whULakZSgkucK')->post('http://37.27.25.242:10824/api/admin/update_member_details', [
-                'date_of_birth' => $request->date_of_birth,
-                'admission_year' => Carbon::parse($request->admission_year)->format('Y-m-01'),
-                'email' => preg_replace(' /\s+/', '', trim($request->email)),
-                'phone' => format_phone_number($request->phone),
-                "member_id" => $user->voter_id,
-            ]);
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+        // try {
+        $response = Http::withToken('TOcEmqFotM2U6O1NI5rEVmep7T2whULakZSgkucK')->post('http://37.27.25.242:10824/api/admin/update_member_details', [
+            'date_of_birth' => $request->date_of_birth,
+            'admission_year' => Carbon::parse($request->admission_year)->format('Y-m-01'),
+            'email' => preg_replace(' /\s+/', '', trim($request->email)),
+            'phone' => format_phone_number($request->phone),
+            "member_id" => $user->voter_id,
+        ]);
+        // } catch (\Throwable $th) {
+        //     //throw $th;
+        // }
 
+        dd($response->body());
 
 
         return $request;
