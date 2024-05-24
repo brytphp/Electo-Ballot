@@ -228,7 +228,15 @@ col
                                                                 <div class="card-body">
                                                                     <div>
                                                                         <img src="{{ $candidate->avatar }}"
-                                                                            style="height:150px; width:400px"
+                                                                            @mobile
+                                                                                style="height:100%; width:100%"
+                                                                            @endmobile
+                                                                            @tablet
+                                                                                style="height:100%; width:100%"
+                                                                            @endtablet
+                                                                            @desktop
+                                                                                style="height:100%; width:100%"
+                                                                            @enddesktop
                                                                             alt="" class="rounded img-fluid">
                                                                     </div>
 
@@ -270,13 +278,13 @@ col
                                                                     <div>
                                                                         <img src="{{ $candidate->avatar }}"
                                                                             @mobile
-                                                                                style="height:180px; width:100%"
+                                                                                style="height:100%; width:100%"
                                                                             @endmobile
                                                                             @tablet
-                                                                                style="height:180px; width:100%"
+                                                                                style="height:100%; width:100%"
                                                                             @endtablet
                                                                             @desktop
-                                                                                style="height:180px; width:100%"
+                                                                                style="height:100%; width:100%"
                                                                             @enddesktop alt=""
                                                                             class="rounded img-fluid">
                                                                     </div>
