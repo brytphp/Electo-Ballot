@@ -216,6 +216,17 @@
       0 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
     ),
   ),
+  'riverskies/laravel-mobile-detect' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Riverskies\\Laravel\\MobileDetect\\MobileDetectServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'MobileDetect' => 'Riverskies\\Laravel\\MobileDetect\\Facades\\MobileDetect',
+    ),
+  ),
   'sentry/sentry-laravel' => 
   array (
     'providers' => 

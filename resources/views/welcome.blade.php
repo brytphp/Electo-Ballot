@@ -201,10 +201,22 @@
                                 <div id="{{ $position->slug }}" class="collapse show">
                                     {{-- {{ $loop->first ? 'show' : 'hide' }} --}}
                                     <div class="card-body">
-                                        <div class="row nogutters">
+                                        <div class="row nogutters justify-content-around">
                                             @foreach ($position->candidates as $key => $candidate)
                                                 @if ($position->position == 'COUNCIL MEMBERS')
-                                                    <div class="col">
+                                                    <div
+                                                        class="
+@mobile
+col-md-4
+@endmobile
+
+@tablet
+col-md-4
+@endtablet
+
+@desktop
+col
+@enddesktop">
                                                         <a href="{{ route('profile', $candidate->id) }}">
                                                             <div class="card text-center team-box">
                                                                 @if ($position->position != 'President')
@@ -232,10 +244,22 @@
                                                         </a>
                                                     </div>
                                                 @else
-                                                    <div class="col-md-3">
+                                                    <div
+                                                        class="@mobile
+col-md-4
+@endmobile
+
+                                                    @tablet
+col-md-4
+@endtablet
+
+                                                    @desktop
+col
+@enddesktop">
                                                         <a href="{{ route('profile', $candidate->id) }}">
                                                             <div class="card text-center team-box"
-                                                                style="width:200px">
+                                                                @desktop style="width:200px"
+                                                                @enddesktop>
                                                                 @if ($position->position != 'President')
                                                                     <div class="card-header rounded">
                                                                         <b>{{ 'Candidate No. ' . $key + 1 }}</b>
@@ -245,7 +269,15 @@
                                                                 <div class="card-body">
                                                                     <div>
                                                                         <img src="{{ $candidate->avatar }}"
-                                                                            style="height:180px; " alt=""
+                                                                            @mobile
+                                                                                style="height:180px; width:100%"
+                                                                            @endmobile
+                                                                            @tablet
+                                                                                style="height:180px; width:100%"
+                                                                            @endtablet
+                                                                            @desktop
+                                                                                style="height:180px; width:100%"
+                                                                            @enddesktop alt=""
                                                                             class="rounded img-fluid">
                                                                     </div>
 
