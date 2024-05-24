@@ -53,6 +53,23 @@
                                     <th>Phone</th>
                                     <td><a href="tel:{{ $voter->phone }}">{{ $voter->phone }}</a></td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="alert alert-info" role="alert">
+                                            <b>For Administrative Purposes Only </b>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Year of Admission</th>
+                                    <td>{{ $voter->admission_year == null ? '...' : \Carbon\Carbon::parse($voter->admission_year)->format('Y-m') }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Birth</th>
+                                    <td>{{ $voter->date_of_birth == null ? '...' : \Carbon\Carbon::parse($voter->date_of_birth)->format('d M Y') }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
 

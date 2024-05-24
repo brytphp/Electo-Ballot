@@ -31,8 +31,8 @@
                     <form class="form-horizontal" method="POST" action="{{ route('exhibition.login.submit') }}">
                         @csrf
 
-                        @if ($errors->has('404'))
-                            <div class="error text-center border-1 font-size-14">{!! $errors->first('404') !!}</div>
+                        @if ($errors->has('username'))
+                            <div class="error text-center border-1 font-size-14">{!! $errors->first('username') !!}</div>
                             <hr>
                         @endif
 
@@ -49,7 +49,7 @@
                             @enderror
                         </div>
 
-
+                        {{--
                         <div class="form-group">
                             <label for="username">{{ $election->username_title ?? 'Email or Phone' }}</label>
                             <input type="text" name="username"
@@ -61,7 +61,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
 
 
 

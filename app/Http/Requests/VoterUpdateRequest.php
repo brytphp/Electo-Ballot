@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VoterUpdateRequest extends FormRequest
@@ -28,7 +29,9 @@ class VoterUpdateRequest extends FormRequest
             'other_names' => 'nullable',
             'email' => 'required|email',
             'country_code' => 'required',
-            'phone' => 'required|phone:'.$this->country_code,
+            'phone' => 'required|phone:' . $this->country_code,
+            'date_of_birth' => ['required', 'date'],
+            'admission_year' => ['required', 'date'],
         ];
     }
 
@@ -46,7 +49,7 @@ class VoterUpdateRequest extends FormRequest
     {
         $validator->after(function ($validator) {
             if ($this->country_code == 'GH') {
-                if (! in_array(substr($this->phone, 0, 3), local_network_prefix()) && strlen($this->phone) == 10) {
+                if (!in_array(substr($this->phone, 0, 3), local_network_prefix()) && strlen($this->phone) == 10) {
                     $validator->errors()->add('phone', 'Please provide a valid phone number');
                 }
             }
@@ -60,6 +63,9 @@ class VoterUpdateRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        $this->merge([]);
+        $this->merge([
+            'date_of_birth' => $this->date_of_birth == null ? null : Carbon::parse($this->date_of_birth)->format('Y-m-d'),
+            'admission_year' => $this->admission_year == null ? null : Carbon::parse($this->admission_year)->format('Y-m'),
+        ]);
     }
 }

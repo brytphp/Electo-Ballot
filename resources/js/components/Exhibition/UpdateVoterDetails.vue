@@ -38,7 +38,12 @@
                             <div data-repeater-list="outer-group" class="outer">
                                 <div data-repeater-item="" class="outer">
 
+                                    <div class="text-center">
+                                        <h3 class="text-danger">Member ID : {{ form.voter_id }}</h3>
+                                    </div>
 
+                                    <hr>
+                                    <!--
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -61,12 +66,16 @@
                                             </div>
                                         </div>
 
+                                    </div> -->
+
+                                    <div class="alert alert-info" role="alert">
+                                        <b>Please note that update will also affect your ICAG member’s portal</b>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="email">Email</label>
+                                                <label for="email">Active Email</label>
                                                 <input v-model="form.email"
                                                     :class="{ 'is-invalid': form.errors.has('email') }" id="email"
                                                     type="email" class="form-control" placeholder="">
@@ -90,7 +99,7 @@
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="phone">Phone</label>
+                                                <label for="phone">Active Phone Number</label>
                                                 <input v-model="form.phone"
                                                     :class="{ 'is-invalid': form.errors.has('phone') }" id="phone"
                                                     maxlength="20" type="phone" class="form-control"
@@ -98,6 +107,50 @@
                                                 <has-error :form="form" field="phone"></has-error>
                                             </div>
                                         </div>
+                                        <hr>
+
+                                        <div class="col-md-12">
+                                            <div class="alert alert-info" role="alert">
+                                                <b>For Administrative Purposes Only </b>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="admission_year">Year of Admission</label>
+                                                <datetime v-model="form.admission_year" placeholder="Date of birth"
+                                                    type="date" auto format="yyyy-MM" class="theme-orange"
+                                                    input-class="form-control"
+                                                    :class="{ 'is-invalid': form.errors.has('admission_year') }">
+                                                </datetime>
+
+                                                <input type="hidden" class="form-control" placeholder=""
+                                                    v-model="form.admission_year"
+                                                    :class="{ 'is-invalid': form.errors.has('admission_year') }"
+                                                    id="admission_year">
+                                                <has-error :form="form" field="admission_year"></has-error>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="date_of_birth">Date of Birth</label>
+                                                <datetime v-model="form.date_of_birth" placeholder="Date of birth"
+                                                    type="date" auto class="theme-orange" input-class="form-control"
+                                                    :class="{ 'is-invalid': form.errors.has('date_of_birth') }">
+                                                </datetime>
+
+                                                <input type="hidden" class="form-control" placeholder=""
+                                                    v-model="form.date_of_birth"
+                                                    :class="{ 'is-invalid': form.errors.has('date_of_birth') }"
+                                                    id="date_of_birth">
+                                                <has-error :form="form" field="date_of_birth"></has-error>
+
+                                            </div>
+                                        </div>
+
+
                                     </div>
 
 
@@ -134,11 +187,14 @@ export default {
         return {
             countries: [],
             form: new Form({
+                voter_id: '',
                 first_name: '',
                 other_names: '',
                 email: '',
                 phone: '',
                 country_code: '',
+                date_of_birth: '',
+                admission_year: '',
             }),
         };
     },
@@ -167,7 +223,7 @@ export default {
                                     this.toast.success('Successfully updated')
                                     setTimeout(() => {
                                         location.reload()
-                                    }, "1000");
+                                    }, "2000");
                                 })
                             .catch(error => {
                                 if (error.response.status == 422) {
@@ -222,12 +278,14 @@ export default {
         mapData() {
             this.countries = window.config.countries
 
-            // this.form.voter_id = this.data.voter_id
+            this.form.voter_id = this.data.voter_id
             this.form.first_name = this.data.first_name
             this.form.other_names = this.data.other_names
             this.form.email = this.data.email
             this.form.phone = this.data.phone
             this.form.country_code = this.data.country_code
+            this.form.date_of_birth = this.data.date_of_birth == null ? null : this.data.date_of_birth
+            this.form.admission_year = this.data.admission_year == null ? null : this.data.admission_year
         },
     },
     created() {
