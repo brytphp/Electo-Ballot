@@ -1,6 +1,6 @@
 @extends('auth.layout')
 
-@section('title', 'Voters Register Exhibition')
+@section('title', 'ICAG 2024 Voters Register Exhibition')
 
 @section('content')
 

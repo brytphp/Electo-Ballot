@@ -1,6 +1,6 @@
 @extends('auth.layout')
 
-@section('title', 'Voter Inclusion Form')
+@section('title', 'ICAG 2024 Voters Register Exhibition')
 
 @section('content')
     <div class="col-md-12 col-lg-12 col-xl-12">
