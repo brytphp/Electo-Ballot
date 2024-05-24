@@ -15,7 +15,7 @@
 
                             <hr class="bg-white">
 
-                            <h4 class="text-white font-wight-bold ml-5">Register Exhibition</h4>
+                            <h4 class="text-white font-wight-bold ml-5">ICAG 2024 Voters Register Exhibition</h4>
                         </div>
                     </div>
                 </div>
