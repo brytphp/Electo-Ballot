@@ -488,8 +488,11 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $otp_expires_at
  * @property string|null $remember_token
  * @property string|null $receipt_id
+ * @property string|null $date_of_birth
+ * @property string|null $admission_year
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $sms_updated_at
  * @property-read \App\Models\Election|null $election
  * @property-read mixed $avatar
  * @property-read mixed $masked_email
@@ -517,9 +520,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAdmissionYear($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAttemptedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDateOfBirth($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereElectionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailCheckedAt($value)
@@ -537,6 +542,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereReceiptId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSessionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSmsUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSystemCheckedPhoneAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)

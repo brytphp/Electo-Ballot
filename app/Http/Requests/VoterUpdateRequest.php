@@ -24,12 +24,14 @@ class VoterUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this->user->id);
         return [
             'first_name' => 'required',
             'other_names' => 'nullable',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'phone' => 'required|phone:' . $this->country_code . '|unique:users,phone,' . $this->user->id,
             'country_code' => 'required',
-            'phone' => 'required|phone:' . $this->country_code,
+            // '' => 'required|:' . $this->country_code,
             'date_of_birth' => ['required', 'date'],
             'admission_year' => ['required', 'date'],
         ];

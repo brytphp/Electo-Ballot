@@ -28,6 +28,7 @@ class UpdateRegister extends Controller
             'verified_at' => now(),
             'email_checked_at' => now(),
             'phone_checked_at' => now(),
+            'sms_updated_at' => now(),
             'system_checked_phone_at' => now(),
             'date_of_birth' => $request->date_of_birth,
             'admission_year' => Carbon::parse($request->admission_year)->format('Y-m-01'),
