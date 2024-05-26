@@ -36,7 +36,7 @@
                                 <td>{{ $voter->voter_id }}</td>
                             </tr>
                             <tr>
-                                <th>First Name</th>
+                                <th>Surname</th>
                                 <td>{{ $voter->first_name }}</td>
                             </tr>
                             <tr>

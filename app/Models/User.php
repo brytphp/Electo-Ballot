@@ -11,6 +11,8 @@ use Propaganistas\LaravelPhone\Casts\RawPhoneNumberCast;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -21,6 +23,18 @@ class User extends Authenticatable implements HasMedia
     use Notifiable;
     use SaveToUpper;
     use UsesUuid;
+    use LogsActivity;
+
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly($this->fillable)
+            ->logOnlyDirty()
+            ->useLogName('User');
+    }
+
+
 
     protected $appends = ['avatar', 'masked_email', 'masked_phone'];
 
