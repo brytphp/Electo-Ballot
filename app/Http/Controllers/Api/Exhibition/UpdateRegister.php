@@ -20,8 +20,8 @@ class UpdateRegister extends Controller
     public function __invoke(VoterUpdateRequest $request, User $user)
     {
         $user->update([
-            'first_name' => str_replace(',', '', format_name(trim($request->first_name))),
-            'other_names' => ucwords(strtolower(trim($request->other_names))),
+            // 'first_name' => str_replace(',', '', format_name(trim($request->first_name))),
+            // 'other_names' => ucwords(strtolower(trim($request->other_names))),
             'email' => preg_replace(' /\s+/', '', trim($request->email)),
             'phone' => format_phone_number($request->phone),
             'country_code' => $request->country_code,
